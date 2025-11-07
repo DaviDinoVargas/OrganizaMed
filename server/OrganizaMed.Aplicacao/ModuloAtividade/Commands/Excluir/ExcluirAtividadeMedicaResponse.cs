@@ -1,0 +1,3 @@
+namespace OrganizaMed.Aplicacao.ModuloAtividade.Commands.Excluir;
+
+public record ExcluirAtividadeMedicaResponse;

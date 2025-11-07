@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Núcleo da Aplicação", "2. Núcleo da Aplicação", "{F94A932C-5DF9-48DB-AA90-6E0D02E7E6DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infraestrutura", "3. Infraestrutura", "{F71849CB-6178-4939-8772-2E1E6C6AE53E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.Dominio", "OrganizaMed.Dominio\OrganizaMed.Dominio.csproj", "{06CE3DC3-CE01-421B-9E48-F4F63345ACCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Camada de Domínio", "Camada de Domínio", "{CDDAEEB3-2F4B-4733-B7FE-F516F4E88B9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Camada de Aplicação", "Camada de Aplicação", "{6DD6AEE9-14A3-4392-A1A0-09D2AB94DAB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.Infraestrutura.Orm", "OrganizaMed.Infraestrutura.Orm\OrganizaMed.Infraestrutura.Orm.csproj", "{4FB6E8ED-DCE6-4055-A266-797385CB23AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Testes", "4. Testes", "{13C8198F-0E1A-4305-9403-107F0367FCFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes de Unidade", "Testes de Unidade", "{3585B958-3207-4679-8B18-FD1589121D19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Distribuição", "1. Distribuição", "{51BA7E50-FDFA-477D-B1F2-082EC7645286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.Testes.Unidade", "OrganizaMed.Testes.Unidade\OrganizaMed.Testes.Unidade.csproj", "{1074373C-BD6B-43D9-ABB6-1447B8584BAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.Aplicacao", "OrganizaMed.Aplicacao\OrganizaMed.Aplicacao.csproj", "{72B860EA-479E-4F21-AB08-883F0A361B68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.WebApi", "OrganizaMed.WebApi\OrganizaMed.WebApi.csproj", "{69A3A305-F361-4706-A86F-FA2DE21799E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06CE3DC3-CE01-421B-9E48-F4F63345ACCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06CE3DC3-CE01-421B-9E48-F4F63345ACCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06CE3DC3-CE01-421B-9E48-F4F63345ACCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06CE3DC3-CE01-421B-9E48-F4F63345ACCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FB6E8ED-DCE6-4055-A266-797385CB23AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB6E8ED-DCE6-4055-A266-797385CB23AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB6E8ED-DCE6-4055-A266-797385CB23AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB6E8ED-DCE6-4055-A266-797385CB23AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1074373C-BD6B-43D9-ABB6-1447B8584BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1074373C-BD6B-43D9-ABB6-1447B8584BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1074373C-BD6B-43D9-ABB6-1447B8584BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1074373C-BD6B-43D9-ABB6-1447B8584BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B860EA-479E-4F21-AB08-883F0A361B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B860EA-479E-4F21-AB08-883F0A361B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B860EA-479E-4F21-AB08-883F0A361B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B860EA-479E-4F21-AB08-883F0A361B68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A3A305-F361-4706-A86F-FA2DE21799E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A3A305-F361-4706-A86F-FA2DE21799E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A3A305-F361-4706-A86F-FA2DE21799E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A3A305-F361-4706-A86F-FA2DE21799E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{06CE3DC3-CE01-421B-9E48-F4F63345ACCF} = {CDDAEEB3-2F4B-4733-B7FE-F516F4E88B9A}
+		{CDDAEEB3-2F4B-4733-B7FE-F516F4E88B9A} = {F94A932C-5DF9-48DB-AA90-6E0D02E7E6DE}
+		{6DD6AEE9-14A3-4392-A1A0-09D2AB94DAB5} = {F94A932C-5DF9-48DB-AA90-6E0D02E7E6DE}
+		{4FB6E8ED-DCE6-4055-A266-797385CB23AC} = {F71849CB-6178-4939-8772-2E1E6C6AE53E}
+		{3585B958-3207-4679-8B18-FD1589121D19} = {13C8198F-0E1A-4305-9403-107F0367FCFE}
+		{1074373C-BD6B-43D9-ABB6-1447B8584BAF} = {3585B958-3207-4679-8B18-FD1589121D19}
+		{72B860EA-479E-4F21-AB08-883F0A361B68} = {6DD6AEE9-14A3-4392-A1A0-09D2AB94DAB5}
+		{69A3A305-F361-4706-A86F-FA2DE21799E2} = {51BA7E50-FDFA-477D-B1F2-082EC7645286}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89195A28-F6EE-4684-8CF6-F5D759B63671}
+	EndGlobalSection
+EndGlobal
