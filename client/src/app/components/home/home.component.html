@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Organiza Med</h1>
+    <div>
+      <button mat-stroked-button color="primary" routerLink="/medicos">Médicos</button>
+      <button mat-stroked-button color="primary" routerLink="/pacientes" class="ms-2">Pacientes</button>
+      <button mat-stroked-button color="primary" routerLink="/atividades" class="ms-2">Atividades</button>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 col-md-4">
+      <mat-card class="h-100">
+        <mat-card-title>Médicos</mat-card-title>
+        <mat-card-content>
+          Gerencie cadastro, edição, exclusão e listagem de médicos.
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" routerLink="/medicos">Abrir</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <mat-card class="h-100">
+        <mat-card-title>Pacientes</mat-card-title>
+        <mat-card-content>
+          Cadastre e consulte pacientes — Nome, CPF, Email e Telefone.
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" routerLink="/pacientes">Abrir</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <mat-card class="h-100">
+        <mat-card-title>Atividades Médicas</mat-card-title>
+        <mat-card-content>
+          Controle consultas e cirurgias, com filtros e regras de recuperação.
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" routerLink="/atividades">Abrir</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
