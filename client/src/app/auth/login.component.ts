@@ -50,20 +50,53 @@ export class LoginComponent {
   }
 
  submit() {
-  if (this.form.invalid) return;
-  this.loading = true;
+  if (this.form.invalid) {
+    this.snack.open('Preencha usuário e senha.', 'Fechar', { duration: 3000 });
+    return;
+  }
 
+  this.loading = true;
   const { userName, password } = this.form.value;
 
-  // Chamada correta para autenticação
+  console.log('Tentando autenticar', { userName });
+
   this.auth.autenticar(userName!, password!).subscribe({
-    next: () => {
-      this.snack.open('Login realizado com sucesso', 'Ok', { duration: 2000 });
-      this.router.navigateByUrl(this.returnUrl);
+    next: (tokenResp) => {
+      console.log('Resposta do /autenticar:', tokenResp);
+
+      // Verifica token/usúario conforme seu AuthService (ajuste se os nomes de storage mudaram)
+      const token = this.auth.getToken();
+      const usuario = this.auth.getUsuario();
+      const isLogged = this.auth.isLoggedIn();
+
+      console.log('getToken():', token);
+      console.log('getUsuario():', usuario);
+      console.log('isLoggedIn():', isLogged);
+
+      if (!token) {
+        this.loading = false;
+        this.snack.open('Login recebido, mas token ausente. Verifique servidor.', 'Fechar', { duration: 6000 });
+        return;
+      }
+
+      // tenta navegar explicitamente e loga o resultado
+      this.router.navigateByUrl(this.returnUrl).then(navSucceeded => {
+        this.loading = false;
+        console.log('router.navigateByUrl result:', navSucceeded);
+        if (!navSucceeded) {
+          this.snack.open('Navegação falhou (guard ou rota). Verifique console.', 'Fechar', { duration: 5000 });
+        }
+      }).catch(err => {
+        this.loading = false;
+        console.error('Erro no router.navigateByUrl:', err);
+        this.snack.open('Erro ao navegar: veja o console.', 'Fechar', { duration: 5000 });
+      });
     },
-    error: () => {
+    error: (err) => {
       this.loading = false;
-      this.snack.open('Falha no login. Verifique usuário/senha.', 'Fechar', { duration: 4000 });
+      console.error('Erro ao autenticar:', err);
+      const msg = err?.error && (typeof err.error === 'string' ? err.error : JSON.stringify(err.error));
+      this.snack.open(msg ?? 'Falha no login. Verifique usuário/senha.', 'Fechar', { duration: 5000 });
     }
   });
 }
