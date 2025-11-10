@@ -49,20 +49,21 @@ export class LoginComponent {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] ?? '/';
   }
 
-  submit() {
+ submit() {
   if (this.form.invalid) return;
   this.loading = true;
-  const { userName, email, password } = this.form.value;
-  this.auth.registrar(userName!, email!, password!).subscribe({
-    next: (res) => {
-      this.snack.open('Conta criada e logado.', 'Ok', { duration: 2500 });
-      this.router.navigate(['/']);
+
+  const { userName, password } = this.form.value;
+
+  // Chamada correta para autenticação
+  this.auth.autenticar(userName!, password!).subscribe({
+    next: () => {
+      this.snack.open('Login realizado com sucesso', 'Ok', { duration: 2000 });
+      this.router.navigateByUrl(this.returnUrl);
     },
-    error: (err) => {
+    error: () => {
       this.loading = false;
-      // err.error deve conter a lista de mensagens retornadas pelo FluentResults
-      const mensagens = Array.isArray(err.error) ? err.error.join('\n') : 'Falha ao registrar. Confira os dados.';
-      this.snack.open(mensagens, 'Fechar', { duration: 4000 });
+      this.snack.open('Falha no login. Verifique usuário/senha.', 'Fechar', { duration: 4000 });
     }
   });
 }
