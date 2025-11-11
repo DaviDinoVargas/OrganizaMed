@@ -22,7 +22,6 @@ class ComandoInput(BaseModel):
     mensagem: Optional[str] = None
     comando: Optional[str] = None
 
-# mapa meses em português para número
 MONTHS = {
     "janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4,
     "maio": 5, "junho": 6, "julho": 7, "agosto": 8, "setembro": 9,
@@ -32,24 +31,24 @@ MONTHS = {
 def parse_date_parts(day_s: str, month_s: str, year_s: Optional[str]) -> Optional[str]:
     try:
         day = int(day_s)
-        # month can be number or name
+        # mês pode ser palavra ou numero
         month = None
         if month_s.isdigit():
             month = int(month_s)
         else:
             month = MONTHS.get(month_s.lower())
             if month is None:
-                # sometimes month like 'nov' etc — try first 3 letters
+                # quando utilizado apenas as 3 primeiras letras
                 month = MONTHS.get(month_s[:3].lower())
         if month is None:
             return None
-        # year may be 2 or 4 digits
+        # anos com 2 ou 4 digitos
         if year_s:
             year = int(year_s)
-            if year < 100:  # 2-digit year -> assume 2000+
+            if year < 100:  # 2- digitos do ano -> assume 2000+
                 year += 2000
         else:
-            # if year missing, assume current year
+            # sem ano = ano atual
             year = datetime.now().year
         return f"{year:04d}-{month:02d}-{day:02d}"
     except Exception:
