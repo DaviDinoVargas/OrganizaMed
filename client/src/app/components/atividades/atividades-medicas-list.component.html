@@ -1,0 +1,40 @@
+<div>
+  <h2>Atividades Médicas</h2>
+
+  <label>
+    Filtrar por tipo:
+    <select [(ngModel)]="filtroTipo" (change)="listar()">
+      <option value="">Todos</option>
+      <option value="Consulta">Consulta</option>
+      <option value="Cirurgia">Cirurgia</option>
+    </select>
+  </label>
+
+  <button routerLink="/atividades-medicas/new">Nova Atividade</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Início</th>
+        <th>Término</th>
+        <th>Tipo</th>
+        <th>Paciente</th>
+        <th>Médicos</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of atividades">
+        <td>{{ a.inicio | date:'short' }}</td>
+        <td>{{ a.termino | date:'short' }}</td>
+        <td>{{ a.tipoAtividade }}</td>
+        <td>{{ a.pacienteId }}</td>
+        <td>{{ getMedicosNomes(a.medicos) }}</td>
+        <td>
+          <button (click)="editar(a.id!)">Editar</button>
+          <button (click)="excluir(a.id!)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -42,4 +42,7 @@ export class PacientesService {
     const params = new HttpParams().set('nome', nome);
     return this.http.get<any>(this.base, { params }).pipe(map(raw => this.extractData<PacienteDto[]>(raw)));
   }
+  getAll(): Observable<PacienteDto[]> {
+  return this.http.get<PacienteDto[]>('https://localhost:7043/api/pacientes');
+}
 }

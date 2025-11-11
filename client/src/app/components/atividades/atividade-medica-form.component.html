@@ -1,0 +1,17 @@
+<h2>{{ id ? 'Editar' : 'Nova' }} Atividade Médica</h2>
+
+<form [formGroup]="form" (ngSubmit)="salvar()">
+  <label>Início: <input type="datetime-local" formControlName="inicio"></label>
+  <label>Término: <input type="datetime-local" formControlName="termino"></label>
+  <label>Tipo:
+    <select formControlName="tipoAtividade">
+      <option value="Consulta">Consulta</option>
+      <option value="Cirurgia">Cirurgia</option>
+    </select>
+  </label>
+  <label>Paciente: <input type="text" formControlName="pacienteId"></label>
+  <label>Médicos: <input type="text" formControlName="medicos"></label>
+
+  <button type="submit">Salvar</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
+</form>
