@@ -27,12 +27,18 @@ export class AtividadesMedicasListComponent implements OnInit {
   }
 
   listar() {
-    this.loading = true;
-    this.svc.listar(this.filtroTipo).subscribe({
-      next: data => { this.atividades = data; this.loading = false; },
-      error: err => { console.error(err); this.loading = false; }
-    });
-  }
+  this.loading = true;
+  this.svc.listar(this.filtroTipo).subscribe({
+    next: data => {
+      this.atividades = (data as any).dados?.registros ?? [];
+      this.loading = false;
+    },
+    error: err => {
+      console.error(err);
+      this.loading = false;
+    }
+  });
+}
 
   editar(id: string) {
     this.router.navigate(['/atividades-medicas/edit', id]);

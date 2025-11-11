@@ -43,6 +43,6 @@ export class PacientesService {
     return this.http.get<any>(this.base, { params }).pipe(map(raw => this.extractData<PacienteDto[]>(raw)));
   }
   getAll(): Observable<PacienteDto[]> {
-  return this.http.get<PacienteDto[]>('https://localhost:7043/api/pacientes');
-}
+    return this.http.get<any>(this.base).pipe(map(raw => this.extractData<PacienteDto[]>(raw)));
+  }
 }

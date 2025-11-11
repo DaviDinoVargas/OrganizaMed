@@ -61,6 +61,8 @@ export class MedicosService {
   }
 
   getAll(): Observable<MedicoDto[]> {
-  return this.http.get<MedicoDto[]>('https://localhost:7043/api/medicos');
-}
+    return this.http.get<any>(this.base).pipe(
+      map(raw => this.extractData<MedicoDto[]>(raw))
+    );
+  }
 }

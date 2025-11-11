@@ -9,44 +9,59 @@ export class AtividadesMedicasService {
 
   constructor(private http: HttpClient) {}
 
+  listar(tipo?: 'Consulta' | 'Cirurgia'): Observable<AtividadeMedicaDto[]> {
+    let params = new HttpParams();
+    if (tipo) params = params.set('tipoAtividade', tipo);
+
+    return this.http.get<any>(this.base, { params }).pipe(
+      map(raw => {
+        console.log('Resposta da listagem:', raw);
+        return raw.registros ?? [];
+      })
+    );
+  }
+
+  obter(id: string): Observable<AtividadeMedicaDto> {
+    return this.http.get<any>(`${this.base}/${id}`).pipe(
+      map(raw => {
+        console.log('Resposta detalhe:', raw);
+        return this.extractData<AtividadeMedicaDto>(raw);
+      })
+    );
+  }
+
+  criar(payload: AtividadeMedicaDto): Observable<any> {
+    console.log('Criando atividade:', payload);
+    return this.http.post<any>(this.base, payload).pipe(
+      map(raw => {
+        console.log('Resposta criação:', raw);
+        return this.extractData<any>(raw);
+      })
+    );
+  }
+
+  atualizar(id: string, payload: AtividadeMedicaDto): Observable<any> {
+    console.log('Atualizando atividade:', payload);
+    return this.http.put<any>(`${this.base}/${id}`, payload).pipe(
+      map(raw => {
+        console.log('Resposta atualização:', raw);
+        return this.extractData<any>(raw);
+      })
+    );
+  }
+
+  excluir(id: string): Observable<void> {
+    return this.http.delete<any>(`${this.base}/${id}`).pipe(
+      map(raw => this.extractData<void>(raw))
+    );
+  }
+
   private extractData<T>(raw: any): T {
+    console.log('Extraindo dados de:', raw);
     if (!raw) return raw;
     if (raw.dados) return raw.dados as T;
     if (raw.data) return raw.data as T;
     if (raw.registros) return raw.registros as T;
     return raw as T;
   }
-
-  listar(tipo?: 'Consulta' | 'Cirurgia'): Observable<AtividadeMedicaDto[]> {
-  let params = new HttpParams();
-  if (tipo) params = params.set('tipoAtividade', tipo);
-
-  return this.http.get<any>(this.base, { params }).pipe(
-    map(raw => {
-      // Extrai o array de registros
-      return raw.registros ?? [];
-    })
-  );
-}
-
-  obter(id: string): Observable<AtividadeMedicaDto> {
-    return this.http.get<any>(`${this.base}/${id}`)
-      .pipe(map(raw => this.extractData<AtividadeMedicaDto>(raw)));
-  }
-
-  criar(payload: AtividadeMedicaDto): Observable<AtividadeMedicaDto> {
-    return this.http.post<any>(this.base, payload)
-      .pipe(map(raw => this.extractData<AtividadeMedicaDto>(raw)));
-  }
-
-  atualizar(id: string, payload: AtividadeMedicaDto): Observable<AtividadeMedicaDto> {
-    return this.http.put<any>(`${this.base}/${id}`, payload)
-      .pipe(map(raw => this.extractData<AtividadeMedicaDto>(raw)));
-  }
-
-  excluir(id: string): Observable<void> {
-    return this.http.delete<any>(`${this.base}/${id}`)
-      .pipe(map(raw => this.extractData<void>(raw)));
-  }
-
 }
