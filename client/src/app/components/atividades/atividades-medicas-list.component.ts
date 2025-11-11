@@ -26,35 +26,34 @@ export class AtividadesMedicasListComponent implements OnInit {
     this.listar();
   }
 
-  listar() {
+ listar() {
   this.loading = true;
   this.svc.listar(this.filtroTipo).subscribe({
     next: data => {
-      this.atividades = (data as any).dados?.registros ?? [];
+      this.atividades = data; // já vem limpo
       this.loading = false;
     },
     error: err => {
-      console.error(err);
+      console.error('Erro ao listar atividades:', err);
       this.loading = false;
     }
   });
 }
 
-  editar(id: string) {
-    this.router.navigate(['/atividades-medicas/edit', id]);
-  }
+ editar(id: string | undefined) {
+  if (!id) return;
+  this.router.navigate(['/atividades-medicas/edit', id]);
+}
 
-  excluir(id: string) {
-    if (!confirm('Confirma a exclusão desta atividade?')) return;
-    this.svc.excluir(id).subscribe({
-      next: () => this.listar(),
-      error: err => console.error(err)
-    });
-  }
+excluir(id: string | undefined) {
+  if (!id || !confirm('Confirma a exclusão desta atividade?')) return;
+  this.svc.excluir(id).subscribe({
+    next: () => this.listar(),
+    error: err => console.error(err)
+  });
+}
 
-  // Corrige o erro do map no template
-  getMedicosNomes(medicos?: MedicoDto[]): string {
-    if (!medicos || medicos.length === 0) return '';
-    return medicos.map(m => m.nome).join(', ');
-  }
+ getMedicosNomes(medicos: { nome: string }[]): string {
+  return medicos.map(m => m.nome).join(', ');
+}
 }

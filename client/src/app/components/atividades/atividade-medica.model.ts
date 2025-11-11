@@ -13,9 +13,10 @@ export interface PacienteDto {
 
 export interface AtividadeMedicaDto {
   id?: string;
-  inicio: string;  // ISO string
+  inicio: string;
   termino?: string;
   tipoAtividade: 'Consulta' | 'Cirurgia';
   pacienteId: string;
+  paciente?: PacienteDto; // Adicione esta linha
   medicos: MedicoDto[];
 }

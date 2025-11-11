@@ -28,11 +28,12 @@
         <td>{{ a.inicio | date:'short' }}</td>
         <td>{{ a.termino | date:'short' }}</td>
         <td>{{ a.tipoAtividade }}</td>
-        <td>{{ a.pacienteId }}</td>
+        <td>{{ a.paciente?.nome }}</td>
         <td>{{ getMedicosNomes(a.medicos) }}</td>
+
         <td>
-          <button (click)="editar(a.id!)">Editar</button>
-          <button (click)="excluir(a.id!)">Excluir</button>
+          <button (click)="editar(a.id)">Editar</button>
+          <button (click)="excluir(a.id)">Excluir</button>
         </td>
       </tr>
     </tbody>

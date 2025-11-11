@@ -10,16 +10,30 @@ export class AtividadesMedicasService {
   constructor(private http: HttpClient) {}
 
   listar(tipo?: 'Consulta' | 'Cirurgia'): Observable<AtividadeMedicaDto[]> {
-    let params = new HttpParams();
-    if (tipo) params = params.set('tipoAtividade', tipo);
+  let params = new HttpParams();
+  if (tipo) params = params.set('tipoAtividade', tipo);
 
-    return this.http.get<any>(this.base, { params }).pipe(
-      map(raw => {
-        console.log('Resposta da listagem:', raw);
-        return raw.registros ?? [];
-      })
-    );
-  }
+  return this.http.get<any>(this.base, { params }).pipe(
+    map(raw => {
+      console.log('Resposta raw do API:', raw);
+
+      // Extrai diretamente os registros
+      const registros = raw?.dados?.registros ?? [];
+
+      // Mapeia para garantir que paciente e médicos existam
+      return registros.map((a: any) => ({
+        id: a.id,
+        inicio: a.inicio,
+        termino: a.termino,
+        tipoAtividade: a.tipoAtividade,
+        pacienteId: a.paciente?.id ?? '',
+        paciente: a.paciente ?? { nome: 'N/A', id: '', email: '', telefone: '' },
+        medicos: a.medicos ?? []
+      })) as AtividadeMedicaDto[];
+    })
+  );
+}
+
 
   obter(id: string): Observable<AtividadeMedicaDto> {
     return this.http.get<any>(`${this.base}/${id}`).pipe(
