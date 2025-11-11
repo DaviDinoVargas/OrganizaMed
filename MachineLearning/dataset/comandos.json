@@ -1,0 +1,20 @@
+[
+    {
+        "comando": "marque uma consulta dia 12/11 paciente João médico Dr. Silva",
+        "json": {
+            "tipoAtividade": "Consulta",
+            "pacienteNome": "João",
+            "medicoNome": "Dr. Silva",
+            "inicio": "2025-11-12T09:00"
+        }
+    },
+    {
+        "comando": "agende cirurgia paciente Maria Dr. Pedro 15/11 14h",
+        "json": {
+            "tipoAtividade": "Cirurgia",
+            "pacienteNome": "Maria",
+            "medicoNome": "Dr. Pedro",
+            "inicio": "2025-11-15T14:00"
+        }
+    }
+]
