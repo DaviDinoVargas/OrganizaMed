@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Pacientes</h3>
+    <div>
+      <button class="btn btn-primary" (click)="novo()">Novo Paciente</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="mb-3">Carregando...</div>
+
+  <table class="table table-striped" *ngIf="!loading && pacientes.length > 0">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th style="width:160px">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pacientes">
+        <td>{{ p.nome }}</td>
+        <td>{{ p.cpf }}</td>
+        <td>{{ p.email }}</td>
+        <td>{{ p.telefone }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary me-2" (click)="editar(p.id)">Editar</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="excluir(p.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && pacientes.length === 0" class="alert alert-info">Nenhum paciente encontrado.</div>
+</div>
