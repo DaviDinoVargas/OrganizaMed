@@ -1,20 +1,118 @@
 [
-    {
-        "comando": "marque uma consulta dia 12/11 paciente João médico Dr. Silva",
-        "json": {
-            "tipoAtividade": "Consulta",
-            "pacienteNome": "João",
-            "medicoNome": "Dr. Silva",
-            "inicio": "2025-11-12T09:00"
-        }
-    },
-    {
-        "comando": "agende cirurgia paciente Maria Dr. Pedro 15/11 14h",
-        "json": {
-            "tipoAtividade": "Cirurgia",
-            "pacienteNome": "Maria",
-            "medicoNome": "Dr. Pedro",
-            "inicio": "2025-11-15T14:00"
-        }
+  {
+    "comando": "marque uma consulta com o paciente João e o médico Dr. Silva no dia 12/11/2025 às 09:00 até 09:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "João",
+      "medicoNome": "Dr. Silva",
+      "inicio": "2025-11-12T09:00",
+      "fim": "2025-11-12T09:30"
     }
+  },
+  {
+    "comando": "agende uma cirurgia para Maria com o Dr. Pedro em 15 de novembro às 14h até 17h",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Maria",
+      "medicoNome": "Dr. Pedro",
+      "inicio": "2025-11-15T14:00",
+      "fim": "2025-11-15T17:00"
+    }
+  },
+  {
+    "comando": "crie um retorno para o paciente Carlos com o Dr. Ana dia 16/11 às 10h",
+    "json": {
+      "tipoAtividade": "Retorno",
+      "pacienteNome": "Carlos",
+      "medicoNome": "Dr. Ana",
+      "inicio": "2025-11-16T10:00"
+    }
+  },
+  {
+    "comando": "agendar exame com o paciente Beatriz e o médico Dr. Paulo para o dia 18/11 às 08:30",
+    "json": {
+      "tipoAtividade": "Exame",
+      "pacienteNome": "Beatriz",
+      "medicoNome": "Dr. Paulo",
+      "inicio": "2025-11-18T08:30"
+    }
+  },
+  {
+    "comando": "marcar teleconsulta entre o paciente Tiago e a Dra. Clara no dia 20/11 às 13h30",
+    "json": {
+      "tipoAtividade": "Teleconsulta",
+      "pacienteNome": "Tiago",
+      "medicoNome": "Dra. Clara",
+      "inicio": "2025-11-20T13:30"
+    }
+  },
+  {
+    "comando": "reserva uma consulta para João dia 12-11-2025 das 9 às 10h com o Dr. Pedro",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "João",
+      "medicoNome": "Dr. Pedro",
+      "inicio": "2025-11-12T09:00",
+      "fim": "2025-11-12T10:00"
+    }
+  },
+  {
+    "comando": "criar cirurgia do paciente Marcos com a médica Ana em 13/11/25 às 15h até 17h30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Marcos",
+      "medicoNome": "Dra. Ana",
+      "inicio": "2025-11-13T15:00",
+      "fim": "2025-11-13T17:30"
+    }
+  },
+  {
+    "comando": "agendar retorno do paciente Lara com o Dr. João amanhã às 9h",
+    "json": {
+      "tipoAtividade": "Retorno",
+      "pacienteNome": "Lara",
+      "medicoNome": "Dr. João",
+      "inicio": "2025-11-12T09:00"
+    }
+  },
+  {
+    "comando": "consulta online paciente Pedro com a médica Fernanda hoje às 10h",
+    "json": {
+      "tipoAtividade": "Teleconsulta",
+      "pacienteNome": "Pedro",
+      "medicoNome": "Dra. Fernanda",
+      "inicio": "2025-11-11T10:00"
+    }
+  },
+  {
+    "comando": "agendar cirurgia urgente paciente Bruno médico Dr. Luiz 14/11 às 11h até 13h",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Bruno",
+      "medicoNome": "Dr. Luiz",
+      "inicio": "2025-11-14T11:00",
+      "fim": "2025-11-14T13:00",
+      "urgente": true
+    }
+  },
+  {
+    "comando": "marque uma consulta com o paciente Dino Dino com o medico Dinos dia 12/11/2025 as 10:30 até as 11:30 do mesmo dia",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Dino Dino",
+      "medicoNome": "Dinos",
+      "inicio": "2025-11-12T10:30",
+      "fim": "2025-11-12T11:30"
+    }
+  },
+  {
+    "comando": "agende uma consulta entre o paciente Dino Dino e o médico Dinos para o dia 12 de novembro de 2025 das 10:30 às 11:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Dino Dino",
+      "medicoNome": "Dinos",
+      "inicio": "2025-11-12T10:30",
+      "fim": "2025-11-12T11:30"
+    }
+  }
 ]

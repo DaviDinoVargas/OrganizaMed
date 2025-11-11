@@ -45,4 +45,20 @@
       </mat-card>
     </div>
   </div>
+
+  <!-- Campo de chat LLM -->
+  <div class="chat-container">
+    <div class="chat-header">
+      Assistente Virtual
+    </div>
+    <div class="chat-messages">
+      <div *ngFor="let msg of mensagens" [ngClass]="{'user-msg': msg.usuario === 'user', 'bot-msg': msg.usuario === 'bot'}">
+        {{ msg.texto }}
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Digite um comando..." [(ngModel)]="comando" (keydown.enter)="enviarComando()"/>
+      <button mat-raised-button color="primary" (click)="enviarComando()">Enviar</button>
+    </div>
+  </div>
 </div>
