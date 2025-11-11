@@ -1,7 +1,13 @@
+// src/app/components/medicos/medicos.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { MedicoDto } from './medico.model';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+
+export interface MedicoDto {
+  id?: string;
+  nome: string;
+  crm: string;
+}
 
 @Injectable({ providedIn: 'root' })
 export class MedicosService {
@@ -9,31 +15,48 @@ export class MedicosService {
 
   constructor(private http: HttpClient) {}
 
-  listar(): Observable<MedicoDto[]> {
-    return this.http.get<MedicoDto[]>(this.base);
+  private extractData<T>(raw: any): T {
+    if (raw === null || raw === undefined) return raw;
+    if (typeof raw === 'object' && raw.dados !== undefined) return raw.dados as T;
+    if (typeof raw === 'object' && raw.data !== undefined) return raw.data as T;
+    if (typeof raw === 'object' && raw.registros !== undefined) return raw.registros as T;
+    return raw as T;
   }
 
-  obter(id: string): Observable<MedicoDto> {
-    return this.http.get<MedicoDto>(`${this.base}/${id}`);
+  listar(): Observable<MedicoDto[] | any> {
+    return this.http.get<any>(this.base).pipe(
+      map(raw => this.extractData<MedicoDto[]>(raw))
+    );
   }
 
-  criar(payload: MedicoDto): Observable<MedicoDto> {
-    return this.http.post<MedicoDto>(this.base, payload);
+  obter(id: string) {
+    return this.http.get<any>(`${this.base}/${id}`).pipe(
+      map(raw => this.extractData<MedicoDto>(raw))
+    );
   }
 
-  atualizar(id: string, payload: MedicoDto): Observable<MedicoDto> {
-    return this.http.put<MedicoDto>(`${this.base}/${id}`, payload);
+  criar(payload: MedicoDto) {
+    return this.http.post<any>(this.base, payload).pipe(
+      map(raw => this.extractData<MedicoDto>(raw))
+    );
   }
 
-  excluir(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.base}/${id}`);
+  atualizar(id: string, payload: MedicoDto) {
+    return this.http.put<any>(`${this.base}/${id}`, payload).pipe(
+      map(raw => this.extractData<MedicoDto>(raw))
+    );
   }
 
-  // opcional: top-10 com período
-  top10(dataInicioIso: string, dataFimIso: string): Observable<MedicoDto[]> {
-    const params = new HttpParams()
-      .set('dataInicio', dataInicioIso)
-      .set('dataFim', dataFimIso);
-    return this.http.get<MedicoDto[]>(`${this.base}/top-10`, { params });
+  excluir(id: string) {
+    return this.http.delete<any>(`${this.base}/${id}`).pipe(
+      map(raw => this.extractData<void>(raw))
+    );
+  }
+
+  top10(dataInicioIso: string, dataFimIso: string) {
+    const params = new HttpParams().set('dataInicio', dataInicioIso).set('dataFim', dataFimIso);
+    return this.http.get<any>(`${this.base}/top-10`, { params }).pipe(
+      map(raw => this.extractData<MedicoDto[]>(raw))
+    );
   }
 }

@@ -1,13 +1,19 @@
-<!-- src/app/components/medicos/medicos-list.component.html -->
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Médicos</h3>
     <div>
+      <button class="btn btn-outline-secondary me-2" (click)="verTop10()">Top-10</button>
       <button class="btn btn-primary" (click)="novo()">Novo Médico</button>
     </div>
   </div>
 
   <div *ngIf="loading" class="mb-3">Carregando...</div>
+
+  <!-- DEBUG: mostra o JSON bruto apenas quando existir -->
+  <!-- <div class="mb-3" *ngIf="rawResponse !== null">
+    <strong>Raw response (debug):</strong>
+    <pre style="max-height:200px;overflow:auto;background:#f8f9fa;padding:8px;border:1px solid #eee">{{ rawResponse | json }}</pre>
+  </div> -->
 
   <table class="table table-striped" *ngIf="!loading && medicos.length > 0">
     <thead>
@@ -29,7 +35,5 @@
     </tbody>
   </table>
 
-  <div *ngIf="!loading && medicos.length === 0" class="alert alert-info">
-    Nenhum médico encontrado.
-  </div>
+  <div *ngIf="!loading && medicos.length === 0" class="alert alert-info">Nenhum médico encontrado.</div>
 </div>
