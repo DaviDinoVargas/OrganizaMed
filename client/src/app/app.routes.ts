@@ -6,6 +6,8 @@ import { MedicosComponent } from './components/medicos/medicos.component';
 import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { AtividadesComponent } from './components/atividades/atividades.component';
 import { AuthGuard } from './auth/auth.guard';
+import { MedicosListComponent } from './components/medicos/medicos-list.component';
+import { MedicoFormComponent } from './components/medicos/medico-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,5 +17,8 @@ export const routes: Routes = [
   { path: 'medicos', component: MedicosComponent, canActivate: [AuthGuard] },
   { path: 'pacientes', component: PacientesComponent, canActivate: [AuthGuard] },
   { path: 'atividades', component: AtividadesComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'home' },
+  { path: 'medicos', component: MedicosListComponent, canActivate: [AuthGuard] },
+  { path: 'medicos/new', component: MedicoFormComponent, canActivate: [AuthGuard] },
+  { path: 'medicos/:id/edit', component: MedicoFormComponent, canActivate: [AuthGuard] },
 ];

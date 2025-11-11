@@ -1,0 +1,27 @@
+<div class="container mt-3">
+  <h4 *ngIf="!editMode">Novo Médico</h4>
+  <h4 *ngIf="editMode">Editar Médico</h4>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input class="form-control" formControlName="nome" />
+      <div *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" class="text-danger small">
+        Nome é obrigatório.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">CRM (ex: 78806-SP)</label>
+      <input class="form-control" formControlName="crm" />
+      <div *ngIf="form.controls['crm'].invalid && form.controls['crm'].touched" class="text-danger small">
+        CRM inválido. Formato esperado: 5 dígitos + hífen + sigla do estado (ex: 78806-SP).
+      </div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary" type="submit" [disabled]="loading">{{ editMode ? 'Salvar' : 'Criar' }}</button>
+      <button class="btn btn-secondary" type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

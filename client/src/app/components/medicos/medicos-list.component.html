@@ -1,0 +1,35 @@
+<!-- src/app/components/medicos/medicos-list.component.html -->
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Médicos</h3>
+    <div>
+      <button class="btn btn-primary" (click)="novo()">Novo Médico</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="mb-3">Carregando...</div>
+
+  <table class="table table-striped" *ngIf="!loading && medicos.length > 0">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CRM</th>
+        <th style="width:160px">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of medicos">
+        <td>{{ m.nome }}</td>
+        <td>{{ m.crm }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary me-2" (click)="editar(m.id)">Editar</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="excluir(m.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && medicos.length === 0" class="alert alert-info">
+    Nenhum médico encontrado.
+  </div>
+</div>
