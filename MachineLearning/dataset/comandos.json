@@ -106,7 +106,7 @@
     }
   },
   {
-    "comando": "agende uma consulta entre o paciente Dino Dino e o médico Dinos para o dia 12 de novembro de 2025 das 10:30 às 11:30",
+    "comando": "agende uma consulta entre o paciente Dino Dino e o médico dindin para o dia 12 de novembro de 2025 das 10:30 às 11:30",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "Dino Dino",
