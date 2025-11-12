@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
@@ -23,14 +24,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   templateUrl: './register.component.html',
-  // styleUrls: ['./register.component.css'] // opcional
+  styleUrls: ['CSS/auth-shared-styles.css']
 })
 export class RegisterComponent {
   form!: FormGroup;
   loading = false;
+  showPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -45,18 +48,23 @@ export class RegisterComponent {
     });
   }
 
+  toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
   submit() {
     if (this.form.invalid) return;
     this.loading = true;
     const { userName, email, password } = this.form.value;
     this.auth.registrar(userName!, email!, password!).subscribe({
       next: () => {
-        this.snack.open('Conta criada e login realizado com sucesso.', 'Ok', { duration: 2500 });
+        this.loading = false;
+        this.snack.open('Conta criada com sucesso.', 'Ok', { duration: 2500 });
         this.router.navigate(['/']);
       },
       error: () => {
         this.loading = false;
-        this.snack.open('Falha ao registrar. Verifique os dados e tente novamente.', 'Fechar', { duration: 4000 });
+        this.snack.open('Falha ao registrar. Verifique os dados.', 'Fechar', { duration: 4000 });
       }
     });
   }

@@ -1,18 +1,51 @@
-<div style="max-width:480px;margin:48px auto;">
-  <mat-card>
-    <mat-card-title>Registrar</mat-card-title>
+<div class="login-shell">
+  <mat-card class="auth-card login-card">
+    <!-- Brand / título -->
+    <div class="brand">
+      <mat-icon class="brand-icon" color="primary">person_add</mat-icon>
+      <div>
+        <div class="brand-title">Registrar</div>
+        <div class="subtitle">Crie sua conta rapidamente</div>
+      </div>
+    </div>
+
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="submit()">
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-icon matPrefix>person</mat-icon>
           <input matInput placeholder="Usuário" formControlName="userName" />
         </mat-form-field>
-        <mat-form-field class="full-width">
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-icon matPrefix>email</mat-icon>
           <input matInput placeholder="Email" formControlName="email" />
         </mat-form-field>
-        <mat-form-field class="full-width">
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-icon matPrefix>vpn_key</mat-icon>
           <input matInput placeholder="Senha" formControlName="password" type="password" />
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit" [disabled]="loading">Registrar</button>
+
+        <div class="actions">
+          <a routerLink="/login">Já tenho uma conta</a>
+
+          <div style="display:flex; align-items:center; gap:12px;">
+            <button mat-raised-button color="primary" type="submit" class="login-btn" [disabled]="loading || form.invalid">
+              Registrar
+            </button>
+
+            <mat-progress-spinner
+              *ngIf="loading"
+              diameter="36"
+              mode="indeterminate"
+              aria-label="Carregando">
+            </mat-progress-spinner>
+          </div>
+        </div>
+
+        <div class="help">
+          Ao se registrar você concorda com os termos de uso.
+        </div>
       </form>
     </mat-card-content>
   </mat-card>

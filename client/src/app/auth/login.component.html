@@ -1,21 +1,53 @@
-<div class="login-container" style="max-width:420px;margin:48px auto;">
-  <mat-card>
-    <mat-card-title>Login</mat-card-title>
+<div class="login-shell">
+  <mat-card class="login-card" role="region" aria-labelledby="login-title">
+    <div class="brand">
+      <mat-icon class="brand-icon" aria-hidden="true">medication</mat-icon>
+      <h1 id="login-title">OrganizaMed</h1>
+    </div>
+
     <mat-card-content>
-     <form [formGroup]="form" (ngSubmit)="submit()">
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Usuário" formControlName="userName" autocomplete="username" />
-  </mat-form-field>
+      <p class="subtitle">Acesse sua conta para gerenciar consultas, exames e profissionais.</p>
 
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Senha" formControlName="password" type="password" autocomplete="current-password" />
-  </mat-form-field>
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form" aria-describedby="login-help">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuário</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput placeholder="Seu usuário" formControlName="userName" autocomplete="username" aria-required="true" />
+          <mat-error *ngIf="form.get('userName')?.hasError('required')">Usuário é obrigatório</mat-error>
+        </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit" [disabled]="loading">Entrar</button>
-</form>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Senha</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            matInput
+            placeholder="Senha"
+            formControlName="password"
+            autocomplete="current-password"
+            aria-required="true"
+          />
+          <button mat-icon-button matSuffix type="button" (click)="toggleShowPassword()" [attr.aria-pressed]="showPassword" aria-label="Mostrar senha">
+            <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.get('password')?.hasError('required')">Senha é obrigatória</mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-stroked-button color="primary" type="button" routerLink="/registrar">Criar conta</button>
+
+          <button mat-flat-button color="accent" type="submit" [disabled]="loading" class="login-btn">
+            <mat-progress-spinner *ngIf="loading" diameter="18" mode="indeterminate" strokeWidth="3"></mat-progress-spinner>
+            <span *ngIf="!loading">Entrar</span>
+            <span *ngIf="loading">Autenticando...</span>
+          </button>
+        </div>
+      </form>
+
     </mat-card-content>
-    <mat-card-actions>
-      <a routerLink="/registrar">Criar conta</a>
-    </mat-card-actions>
+
+    <mat-card-footer class="help" id="login-help">
+      <small>Ao entrar, você concorda com as políticas internas da clínica.</small>
+    </mat-card-footer>
   </mat-card>
 </div>
