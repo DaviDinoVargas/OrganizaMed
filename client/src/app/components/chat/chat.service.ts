@@ -6,7 +6,6 @@ import { firstValueFrom } from 'rxjs';
 
 export interface ChatMessage {
   id?: string;
-  // permite os literais 'user' | 'bot' mas também aceita string vinda de runtime
   usuario: 'user' | 'bot' | string;
   texto: string;
   ts?: string;
@@ -17,7 +16,6 @@ export class ChatService {
   private messagesSubject = new BehaviorSubject<ChatMessage[]>([]);
   public messages$ = this.messagesSubject.asObservable();
 
-  // ajuste as URLs conforme sua infra
   private pythonUrl = 'http://127.0.0.1:8000/comando';
   private dotnetBase = 'https://localhost:7043/api';
 
@@ -40,9 +38,7 @@ export class ChatService {
     this.messagesSubject.next([]);
   }
 
-  // Envia comando para o interpretador Python e, opcionalmente, cria atividade no backend.
   async sendCommandAndCreateActivity(command: string): Promise<ChatMessage> {
-    // publica a mensagem do usuário
     this.pushLocalMessage({ usuario: 'user', texto: command } as ChatMessage);
 
     try {
@@ -59,7 +55,6 @@ export class ChatService {
       const botMsgInterpret: ChatMessage = { usuario: 'bot', texto: JSON.stringify(dados), ts: new Date().toISOString() };
       this.pushLocalMessage(botMsgInterpret);
 
-      // tentativa de criar atividade (não quebra a UI se falhar)
       try {
         // 1) buscar pacientes
         const pacResp: any = await firstValueFrom(this.http.get<any>(`${this.dotnetBase}/pacientes`));

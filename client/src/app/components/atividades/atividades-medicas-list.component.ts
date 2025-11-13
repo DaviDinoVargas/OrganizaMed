@@ -10,9 +10,9 @@ import { AtividadeMedicaDto, MedicoDto } from './atividade-medica.model';
   templateUrl: './atividades-medicas-list.component.html',
   standalone: true,
   imports: [
-    CommonModule, // *ngFor, pipes como date
-    FormsModule,  // ngModel
-    RouterModule  // routerLink
+    CommonModule,
+    FormsModule,
+    RouterModule  
   ],
   styleUrls: ['../scss/global.scss']
 })
@@ -31,7 +31,7 @@ export class AtividadesMedicasListComponent implements OnInit {
   this.loading = true;
   this.svc.listar(this.filtroTipo).subscribe({
     next: data => {
-      this.atividades = data; // já vem limpo
+      this.atividades = data;
       this.loading = false;
     },
     error: err => {

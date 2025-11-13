@@ -1,9 +1,6 @@
-<!-- src/app/components/chat/chat.component.html -->
 
-<!-- DESKTOP: painel vertical fixo à direita (sempre aberto) -->
 <aside class="chat-panel desktop" *ngIf="!isMobile && isOpen">
   <div class="chat-header">
-    <!-- botão oculto no desktop (sem fechar) -->
   </div>
 
   <mat-card class="chat-card">
@@ -21,7 +18,6 @@
   </mat-card>
 </aside>
 
-<!-- MOBILE: botão flutuante que abre o painel em overlay -->
 <div class="mobile">
   <button mat-fab class="fab-btn" *ngIf="!isOpen" (click)="abrir()" aria-label="Abrir chat">🤖</button>
 

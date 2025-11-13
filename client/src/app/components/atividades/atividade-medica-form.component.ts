@@ -53,9 +53,9 @@ export class AtividadeMedicaFormComponent implements OnInit {
 
   carregarPacientes() {
   this.pacienteService.getAll().subscribe({
-    next: (p: any) => {  // usar 'any' ou tipar como { registros?: PacienteDto[] }
+    next: (p: any) => {
       console.log('Pacientes carregados:', p);
-      this.pacientes = p?.registros ?? [];  // pega só o array se existir, senão vazio
+      this.pacientes = p?.registros ?? [];
     },
     error: (err) => {
       console.error('Erro ao carregar pacientes:', err);
@@ -95,7 +95,6 @@ carregarMedicos() {
       next: (a) => {
         console.log('Atividade carregada:', a);
 
-        // Formatar datas para o input datetime-local
         const inicio = a.inicio ? this.formatDateForInput(a.inicio) : '';
         const termino = a.termino ? this.formatDateForInput(a.termino) : '';
 
@@ -124,7 +123,6 @@ carregarMedicos() {
 
     const formValue = this.form.value;
 
-    // Converter datas para formato ISO
     const payload: AtividadeMedicaDto = {
       ...formValue,
       inicio: this.convertToISO(formValue.inicio),
@@ -151,24 +149,21 @@ carregarMedicos() {
     });
   }
 
-  // Método auxiliar para converter data para ISO
   private convertToISO(dateTimeString: string): string {
     if (!dateTimeString) return '';
-    // Adiciona os segundos se não existirem
+
     if (dateTimeString.length === 16) {
       dateTimeString += ':00';
     }
     return new Date(dateTimeString).toISOString();
   }
 
-  // Método auxiliar para formatar data para o input
   private formatDateForInput(isoString: string): string {
     if (!isoString) return '';
     const date = new Date(isoString);
     return date.toISOString().slice(0, 16);
   }
 
-  // Marcar todos os campos como touched para mostrar erros
   private marcarCamposComoSujos() {
     Object.keys(this.form.controls).forEach(key => {
       const control = this.form.get(key);

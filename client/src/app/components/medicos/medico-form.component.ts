@@ -30,7 +30,6 @@ export class MedicoFormComponent {
       crm: ['', [Validators.required, Validators.pattern(/^\d{5}-[A-Z]{2}$/)]]
     });
 
-    // pega param id (se existir)
     this.id = this.route.snapshot.paramMap.get('id') ?? undefined;
     this.editMode = !!this.id;
 

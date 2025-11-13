@@ -17,10 +17,8 @@ export class AtividadesMedicasService {
     map(raw => {
       console.log('Resposta raw do API:', raw);
 
-      // Extrai diretamente os registros
       const registros = raw?.dados?.registros ?? [];
 
-      // Mapeia para garantir que paciente e médicos existam
       return registros.map((a: any) => ({
         id: a.id,
         inicio: a.inicio,

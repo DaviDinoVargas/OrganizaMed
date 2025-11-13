@@ -13,7 +13,7 @@ import { MedicosService, MedicoDto } from './medicos.service';
 })
 export class MedicosListComponent {
   medicos: MedicoDto[] = [];
-  rawResponse: any = null; // <- declarado para o <pre> debug
+  rawResponse: any = null;
   loading = false;
 
   constructor(
@@ -34,7 +34,6 @@ export class MedicosListComponent {
         console.log('Resposta listar():', dados);
         this.rawResponse = dados;
 
-        // Tratar diferentes formatos de retorno
         if (Array.isArray(dados)) {
           this.medicos = dados;
         } else if (dados?.registros && Array.isArray(dados.registros)) {
@@ -42,7 +41,6 @@ export class MedicosListComponent {
         } else if (dados?.dados && Array.isArray(dados.dados)) {
           this.medicos = dados.dados;
         } else {
-          // tenta achar o primeiro array dentro do objeto
           const arr = Object.values(dados || {}).find(v => Array.isArray(v));
           this.medicos = Array.isArray(arr) ? (arr as any) : [];
         }

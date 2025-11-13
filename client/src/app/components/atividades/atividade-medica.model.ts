@@ -17,6 +17,6 @@ export interface AtividadeMedicaDto {
   termino?: string;
   tipoAtividade: 'Consulta' | 'Cirurgia';
   pacienteId: string;
-  paciente?: PacienteDto; // Adicione esta linha
+  paciente?: PacienteDto; 
   medicos: MedicoDto[];
 }

@@ -19,9 +19,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   loading = false;
 
   isMobile = false;
-  isOpen = true; // NO DESKTOP: sempre aberto
+  isOpen = true; 
 
-  // CONFIG: largura do chat (px) e offset do header (px)
   private chatWidthPx = 360;
   private headerOffsetPx = 72;
 
@@ -40,7 +39,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub?.unsubscribe();
-    this.removeBodyPadding(); // cleanup
+    this.removeBodyPadding();
   }
 
   @HostListener('window:resize')
@@ -53,29 +52,21 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.isMobile = window.matchMedia('(max-width: 800px)').matches;
 
     if (this.isMobile) {
-      // mobile: início fechado (aparece o FAB)
       this.isOpen = false;
       this.removeBodyPadding();
     } else {
-      // desktop: sempre aberto
       this.isOpen = true;
-      // aplica padding para "reservar" espaço para o chat na página
       this.applyBodyPadding();
-      // rolar para baixo após abrir
       setTimeout(() => this.scrollToBottom(), 50);
     }
 
-    // se houve mudança de breakpoint e agora não é mobile, garantir padding
     if (!wasMobile && !this.isMobile) {
       this.applyBodyPadding();
     }
   }
-
-  // No desktop não usa toggle — toggle só para mobile (abrir/fechar overlay)
   toggle() {
     if (this.isMobile) {
       this.isOpen = !this.isOpen;
-      // mobile overlay não precisa tocar no body
     }
   }
 
@@ -106,7 +97,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   private scrollToBottom() {
-    // usa query dentro do componente para evitar conflitar com outros .chat-messages
     const host: HTMLElement = this.elRef.nativeElement;
     const el = host.querySelector('.chat-messages') as HTMLElement | null;
     if (el) el.scrollTop = el.scrollHeight;
@@ -115,21 +105,17 @@ export class ChatComponent implements OnInit, OnDestroy {
   // -------------------- Manipulação do body para empurrar conteúdo --------------------
   private applyBodyPadding() {
     try {
-      // coloca padding-right no body igual à largura do chat
-      // e padding-top no caso de header offset (opcional)
+
       document.body.style.paddingRight = `${this.chatWidthPx}px`;
-      // se você quiser compensar header em layouts com header fixo, pode ajustar paddingTop:
-      // document.body.style.paddingTop = `${this.headerOffsetPx}px`;
       document.body.classList.add('has-chat-sidebar');
     } catch (e) {
-      // falha silenciosa (e.g. server-side rendering ou ambiente restrito)
+
       console.warn('Não foi possível aplicar padding no body para sidebar do chat', e);
     }
   }
 
   private removeBodyPadding() {
     try {
-      // limpa alterações feitas no body
       if (document.body.style.paddingRight) document.body.style.paddingRight = '';
       // if (document.body.style.paddingTop) document.body.style.paddingTop = '';
       document.body.classList.remove('has-chat-sidebar');

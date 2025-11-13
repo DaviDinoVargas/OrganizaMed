@@ -169,7 +169,6 @@ export class HomeComponent implements OnInit {
     const end = new Date();
     end.setDate(now.getDate() + 30);
 
-    // pegar todas as atividades (backend não tem filtro por data, então buscamos e filtramos cliente-side)
     this.atvSvc.listar().subscribe({
       next: (raw: any) => {
         try {
@@ -183,29 +182,22 @@ export class HomeComponent implements OnInit {
             medicos: a.medicos ?? []
           }));
 
-          // map médicoId -> lista de janelas de descanso
           const map = new Map<string, DescansoWindow[]>();
 
           atividades.forEach((a: { termino: Date | null; inicio: Date | null; tipo: string; medicos: any[]; }) => {
             if (!a.inicio && !a.termino) return;
 
             const termino = a.termino ?? a.inicio!;
-            const recoveryMs = a.tipo === 'Cirurgia' ? (4 * 60 * 60 * 1000) : (10 * 60 * 1000); // 4h ou 10min
+            const recoveryMs = a.tipo === 'Cirurgia' ? (4 * 60 * 60 * 1000) : (10 * 60 * 1000);
 
-            // cálculo de janela de descanso real
             const inicioDesc = termino;
             const fimDesc = new Date(termino.getTime() + recoveryMs);
-
-            // Relevância:
-            // - atividades que terminam entre now..end
-            // - ou atividades que terminaram antes de now, mas cuja janela de descanso (fimDesc) ainda é > now (ou seja, descanso em curso)
-            // - ou atividades que iniciam entre now..end (eventos futuros)
             const terminoBetween = termino >= now && termino <= end;
             const inicioBetween = (a.inicio ?? termino) >= now && (a.inicio ?? termino) <= end;
-            const descansoAindaVigente = fimDesc.getTime() > now.getTime() && termino < now; // terminou no passado, mas resta descanso
+            const descansoAindaVigente = fimDesc.getTime() > now.getTime() && termino < now;
 
             if (!(terminoBetween || inicioBetween || descansoAindaVigente)) {
-              return; // não relevante nos próximos 30 dias nem descanso em curso
+              return;
             }
 
             (a.medicos ?? []).forEach((m: any) => {
@@ -217,7 +209,6 @@ export class HomeComponent implements OnInit {
             });
           });
 
-          // obter lista de médicos para enriquecer (nome, crm)
           this.medSvc.listar().subscribe({
             next: (medRaw: any) => {
               try {
@@ -228,7 +219,6 @@ export class HomeComponent implements OnInit {
                 const result: DescansosPorMedico[] = [];
                 for (const [medId, janelas] of map.entries()) {
                   const m = medLookup.get(medId) ?? { id: medId, nome: '—', crm: '—' };
-                  // sort by inicio
                   janelas.sort((a:any,b:any) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
                   result.push({
                     medicoId: medId,
@@ -238,7 +228,6 @@ export class HomeComponent implements OnInit {
                   });
                 }
 
-                // order by name
                 result.sort((a,b) => (a.medicoNome || '').localeCompare(b.medicoNome || ''));
                 this.descansosPorMedico = result;
               } catch (e) {
