@@ -1,192 +1,892 @@
 [
   {
-    "comando": "marque uma consulta com o paciente João e o médico Dr. Silva no dia 12/11/2025 às 09:00 até 09:30",
+    "comando": "marque uma consulta com o paciente João Silva e o médico Dr. Carlos Lima no dia 15/03/2025 das 14:00 às 14:30",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "João",
-      "medicoNome": "Dr. Silva",
-      "inicio": "2025-11-12T09:00",
-      "fim": "2025-11-12T09:30"
+      "pacienteNome": "João Silva",
+      "medicoNome": "Dr. Carlos Lima",
+      "inicio": "2025-03-15T14:00",
+      "fim": "2025-03-15T14:30"
     }
   },
   {
-    "comando": "agende uma cirurgia para Maria com o Dr. Pedro em 15/11/2025 das 14:00 às 17:00",
+    "comando": "agende uma cirurgia para Maria Santos com a Dra. Ana Costa em 20/03/2025 das 08:00 às 10:00",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "Maria",
-      "medicoNome": "Dr. Pedro",
-      "inicio": "2025-11-15T14:00",
-      "fim": "2025-11-15T17:00"
+      "pacienteNome": "Maria Santos",
+      "medicoNome": "Dra. Ana Costa",
+      "inicio": "2025-03-20T08:00",
+      "fim": "2025-03-20T10:00"
     }
   },
   {
-    "comando": "marque uma consulta para Carlos com a Dra. Ana em 16/11/2025 às 10:00",
+    "comando": "marcar consulta para Pedro Alves com Dr. Roberto Souza no dia 25 de março de 2025 às 09:00",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Carlos",
-      "medicoNome": "Dra. Ana",
-      "inicio": "2025-11-16T10:00",
+      "pacienteNome": "Pedro Alves",
+      "medicoNome": "Dr. Roberto Souza",
+      "inicio": "2025-03-25T09:00",
       "fim": null
     }
   },
   {
-    "comando": "marcar cirurgia do paciente Beatriz com o Dr. Paulo em 18/11/2025 das 08:30 às 10:00",
+    "comando": "agende cirurgia para Ana Paula com Dra. Fernanda Lima em 30 de março de 2025 das 13:30 às 15:30",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "Beatriz",
-      "medicoNome": "Dr. Paulo",
-      "inicio": "2025-11-18T08:30",
-      "fim": "2025-11-18T10:00"
+      "pacienteNome": "Ana Paula",
+      "medicoNome": "Dra. Fernanda Lima",
+      "inicio": "2025-03-30T13:30",
+      "fim": "2025-03-30T15:30"
     }
   },
   {
-    "comando": "agende uma consulta com Tiago e a Dra. Clara no dia 20/11/2025 às 13:30",
+    "comando": "marque consulta para Carlos Eduardo com Dr. Marcelo Dias em 05/04/2025 às 11:00",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Tiago",
-      "medicoNome": "Dra. Clara",
-      "inicio": "2025-11-20T13:30",
+      "pacienteNome": "Carlos Eduardo",
+      "medicoNome": "Dr. Marcelo Dias",
+      "inicio": "2025-04-05T11:00",
       "fim": null
     }
   },
   {
-    "comando": "marque consulta para João com Dr. Pedro em 12/11/2025 das 09:00 às 10:00",
-    "json": {
-      "tipoAtividade": "Consulta",
-      "pacienteNome": "João",
-      "medicoNome": "Dr. Pedro",
-      "inicio": "2025-11-12T09:00",
-      "fim": "2025-11-12T10:00"
-    }
-  },
-  {
-    "comando": "agende cirurgia para Marcos com Dra. Ana em 13/11/2025 das 15:00 às 17:30",
+    "comando": "marcar cirurgia para Juliana Pereira com Dra. Patricia Santos em 10/04/2025 das 07:00 às 09:00",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "Marcos",
-      "medicoNome": "Dra. Ana",
-      "inicio": "2025-11-13T15:00",
-      "fim": "2025-11-13T17:30"
+      "pacienteNome": "Juliana Pereira",
+      "medicoNome": "Dra. Patricia Santos",
+      "inicio": "2025-04-10T07:00",
+      "fim": "2025-04-10T09:00"
     }
   },
   {
-    "comando": "marque consulta para Lara com Dr. João amanhã às 09:00",
+    "comando": "agende uma consulta com o paciente Rafael Mendes e o médico Dr. Antonio Costa no dia 15 de abril de 2025 das 16:00 às 16:45",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Lara",
-      "medicoNome": "Dr. João",
-      "inicio": "2025-11-12T09:00",
+      "pacienteNome": "Rafael Mendes",
+      "medicoNome": "Dr. Antonio Costa",
+      "inicio": "2025-04-15T16:00",
+      "fim": "2025-04-15T16:45"
+    }
+  },
+  {
+    "comando": "marque cirurgia para Beatriz Oliveira com Dra. Camila Rodrigues em 20/04/2025 das 14:00 às 17:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Beatriz Oliveira",
+      "medicoNome": "Dra. Camila Rodrigues",
+      "inicio": "2025-04-20T14:00",
+      "fim": "2025-04-20T17:00"
+    }
+  },
+  {
+    "comando": "agendar consulta para Lucas Silva com Dr. Eduardo Pereira em 25/04/2025 às 10:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Lucas Silva",
+      "medicoNome": "Dr. Eduardo Pereira",
+      "inicio": "2025-04-25T10:30",
       "fim": null
     }
   },
   {
-    "comando": "agende consulta para Pedro com Dra. Fernanda hoje às 10:00",
+    "comando": "marque uma cirurgia para Amanda Costa com Dra. Renata Alves no dia 30 de abril de 2025 das 08:30 às 11:30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Amanda Costa",
+      "medicoNome": "Dra. Renata Alves",
+      "inicio": "2025-04-30T08:30",
+      "fim": "2025-04-30T11:30"
+    }
+  },
+  {
+    "comando": "consulta para paciente Bruno Martins com médico Dr. Ricardo Nunes em 05/05/2025 das 15:00 às 15:40",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Pedro",
-      "medicoNome": "Dra. Fernanda",
-      "inicio": "2025-11-11T10:00",
+      "pacienteNome": "Bruno Martins",
+      "medicoNome": "Dr. Ricardo Nunes",
+      "inicio": "2025-05-05T15:00",
+      "fim": "2025-05-05T15:40"
+    }
+  },
+  {
+    "comando": "cirurgia para Carla Souza com Dra. Vanessa Lima em 10/05/2025 das 12:00 às 14:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Carla Souza",
+      "medicoNome": "Dra. Vanessa Lima",
+      "inicio": "2025-05-10T12:00",
+      "fim": "2025-05-10T14:00"
+    }
+  },
+  {
+    "comando": "marcar consulta para Diego Oliveira com Dr. Fabio Santos em 15 de maio de 2025 às 14:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Diego Oliveira",
+      "medicoNome": "Dr. Fabio Santos",
+      "inicio": "2025-05-15T14:00",
       "fim": null
     }
   },
   {
-    "comando": "marque cirurgia urgente para Bruno com Dr. Luiz em 14/11/2025 das 11:00 às 13:00",
+    "comando": "agendar cirurgia para Eliane Costa com Dra. Gabriela Mendes em 20/05/2025 das 09:00 às 12:00",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "Bruno",
-      "medicoNome": "Dr. Luiz",
-      "inicio": "2025-11-14T11:00",
-      "fim": "2025-11-14T13:00"
+      "pacienteNome": "Eliane Costa",
+      "medicoNome": "Dra. Gabriela Mendes",
+      "inicio": "2025-05-20T09:00",
+      "fim": "2025-05-20T12:00"
     }
   },
   {
-    "comando": "marque consulta para Dino Dino com Dr. Dinos no dia 12/11/2025 das 10:30 às 11:30",
+    "comando": "consulta para Fernando Almeida com Dr. Hector Silva no dia 25/05/2025 das 11:00 às 11:50",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Dino Dino",
-      "medicoNome": "Dr. Dinos",
-      "inicio": "2025-11-12T10:30",
-      "fim": "2025-11-12T11:30"
+      "pacienteNome": "Fernando Almeida",
+      "medicoNome": "Dr. Hector Silva",
+      "inicio": "2025-05-25T11:00",
+      "fim": "2025-05-25T11:50"
     }
   },
   {
-    "comando": "agende consulta para Ana com Dr. Carlos em 17/11/2025 às 14:00",
+    "comando": "marque consulta para Giovanna Rocha com Dra. Isabela Costa em 30 de maio de 2025 às 08:30",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Ana",
-      "medicoNome": "Dr. Carlos",
-      "inicio": "2025-11-17T14:00",
+      "pacienteNome": "Giovanna Rocha",
+      "medicoNome": "Dra. Isabela Costa",
+      "inicio": "2025-05-30T08:30",
       "fim": null
     }
   },
   {
-    "comando": "marque cirurgia para Felipe com Dra. Renata em 19/11/2025 das 09:00 às 12:00",
+    "comando": "agende cirurgia para Henrique Lima com Dr. Joao Pedro em 05/06/2025 das 13:00 às 16:00",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "Felipe",
-      "medicoNome": "Dra. Renata",
-      "inicio": "2025-11-19T09:00",
-      "fim": "2025-11-19T12:00"
+      "pacienteNome": "Henrique Lima",
+      "medicoNome": "Dr. Joao Pedro",
+      "inicio": "2025-06-05T13:00",
+      "fim": "2025-06-05T16:00"
     }
   },
   {
-    "comando": "marque consulta para Gabriela com Dr. Eduardo em 21/11/2025 às 11:00",
+    "comando": "marcar consulta para Isabella Santos com Dra. Karina Oliveira no dia 10 de junho de 2025 das 16:00 às 16:45",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Gabriela",
-      "medicoNome": "Dr. Eduardo",
-      "inicio": "2025-11-21T11:00",
+      "pacienteNome": "Isabella Santos",
+      "medicoNome": "Dra. Karina Oliveira",
+      "inicio": "2025-06-10T16:00",
+      "fim": "2025-06-10T16:45"
+    }
+  },
+  {
+    "comando": "agendar uma cirurgia para Jefferson Moraes com Dr. Leonardo Alves em 15/06/2025 das 10:00 às 13:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Jefferson Moraes",
+      "medicoNome": "Dr. Leonardo Alves",
+      "inicio": "2025-06-15T10:00",
+      "fim": "2025-06-15T13:00"
+    }
+  },
+  {
+    "comando": "consulta para Karen Silva com Dra. Mariana Costa no dia 20/06/2025 às 09:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Karen Silva",
+      "medicoNome": "Dra. Mariana Costa",
+      "inicio": "2025-06-20T09:00",
       "fim": null
     }
   },
   {
-    "comando": "agende cirurgia para Rafael com Dra. Beatriz em 22/11/2025 das 15:00 às 18:00",
+    "comando": "marque cirurgia para Lucas Henrique com Dr. Nelson Pereira em 25 de junho de 2025 das 14:30 às 17:30",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "Rafael",
-      "medicoNome": "Dra. Beatriz",
-      "inicio": "2025-11-22T15:00",
-      "fim": "2025-11-22T18:00"
+      "pacienteNome": "Lucas Henrique",
+      "medicoNome": "Dr. Nelson Pereira",
+      "inicio": "2025-06-25T14:30",
+      "fim": "2025-06-25T17:30"
     }
   },
   {
-    "comando": "marque consulta para Júlia com Dr. Henrique em 23/11/2025 às 10:00",
+    "comando": "agende consulta para Mariana Oliveira com Dra. Olivia Santos em 30/06/2025 das 15:00 às 15:50",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Júlia",
-      "medicoNome": "Dr. Henrique",
-      "inicio": "2025-11-23T10:00",
+      "pacienteNome": "Mariana Oliveira",
+      "medicoNome": "Dra. Olivia Santos",
+      "inicio": "2025-06-30T15:00",
+      "fim": "2025-06-30T15:50"
+    }
+  },
+  {
+    "comando": "marcar uma cirurgia para Nicolas Souza com Dr. Paulo Ricardo em 05/07/2025 das 08:00 às 11:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Nicolas Souza",
+      "medicoNome": "Dr. Paulo Ricardo",
+      "inicio": "2025-07-05T08:00",
+      "fim": "2025-07-05T11:00"
+    }
+  },
+  {
+    "comando": "consulta para paciente Patricia Lima com médico Dr. Quintino Silva no dia 10 de julho de 2025 às 10:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Patricia Lima",
+      "medicoNome": "Dr. Quintino Silva",
+      "inicio": "2025-07-10T10:00",
       "fim": null
     }
   },
   {
-    "comando": "agende cirurgia para Leonardo com Dra. Paula em 24/11/2025 das 13:00 às 16:00",
+    "comando": "agendar cirurgia para Ricardo Almeida com Dra. Raquel Mendes em 15/07/2025 das 12:00 às 15:00",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "Leonardo",
-      "medicoNome": "Dra. Paula",
-      "inicio": "2025-11-24T13:00",
-      "fim": "2025-11-24T16:00"
+      "pacienteNome": "Ricardo Almeida",
+      "medicoNome": "Dra. Raquel Mendes",
+      "inicio": "2025-07-15T12:00",
+      "fim": "2025-07-15T15:00"
     }
   },
   {
-    "comando": "marque consulta para Mariana com Dr. Rodrigo em 25/11/2025 às 09:30",
+    "comando": "marque consulta para Samantha Costa com Dr. Sergio Oliveira no dia 20/07/2025 das 14:00 às 14:40",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Mariana",
-      "medicoNome": "Dr. Rodrigo",
-      "inicio": "2025-11-25T09:30",
+      "pacienteNome": "Samantha Costa",
+      "medicoNome": "Dr. Sergio Oliveira",
+      "inicio": "2025-07-20T14:00",
+      "fim": "2025-07-20T14:40"
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Thiago Pereira com Dra. Tatiana Souza em 25 de julho de 2025 das 09:30 às 12:30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Thiago Pereira",
+      "medicoNome": "Dra. Tatiana Souza",
+      "inicio": "2025-07-25T09:30",
+      "fim": "2025-07-25T12:30"
+    }
+  },
+  {
+    "comando": "agende uma consulta com o paciente Ursula Martins e a médica Dra. Uliana Costa no dia 30/07/2025 às 11:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Ursula Martins",
+      "medicoNome": "Dra. Uliana Costa",
+      "inicio": "2025-07-30T11:00",
       "fim": null
     }
   },
   {
-    "comando": "marque cirurgia para André com Dra. Fernanda em 26/11/2025 das 10:00 às 13:00",
+    "comando": "consulta para Victor Hugo com Dr. Valter Silva em 05/08/2025 das 16:00 às 16:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Victor Hugo",
+      "medicoNome": "Dr. Valter Silva",
+      "inicio": "2025-08-05T16:00",
+      "fim": "2025-08-05T16:45"
+    }
+  },
+  {
+    "comando": "cirurgia para Wanessa Oliveira com Dra. Ximena Alves no dia 10 de agosto de 2025 das 13:00 às 16:00",
     "json": {
       "tipoAtividade": "Cirurgia",
-      "pacienteNome": "André",
-      "medicoNome": "Dra. Fernanda",
-      "inicio": "2025-11-26T10:00",
-      "fim": "2025-11-26T13:00"
+      "pacienteNome": "Wanessa Oliveira",
+      "medicoNome": "Dra. Ximena Alves",
+      "inicio": "2025-08-10T13:00",
+      "fim": "2025-08-10T16:00"
+    }
+  },
+  {
+    "comando": "marque consulta para Yago Santos com Dr. Yuri Mendes em 15/08/2025 às 09:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Yago Santos",
+      "medicoNome": "Dr. Yuri Mendes",
+      "inicio": "2025-08-15T09:30",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agendar cirurgia para Zelia Costa com Dra. Zara Oliveira em 20/08/2025 das 08:00 às 11:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Zelia Costa",
+      "medicoNome": "Dra. Zara Oliveira",
+      "inicio": "2025-08-20T08:00",
+      "fim": "2025-08-20T11:00"
+    }
+  },
+  {
+    "comando": "marcar consulta para Alice Pereira com Dr. Andre Santos no dia 25 de agosto de 2025 das 15:00 às 15:50",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Alice Pereira",
+      "medicoNome": "Dr. Andre Santos",
+      "inicio": "2025-08-25T15:00",
+      "fim": "2025-08-25T15:50"
+    }
+  },
+  {
+    "comando": "consulta para Bruno Costa com Dra. Bianca Lima em 30/08/2025 às 10:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Bruno Costa",
+      "medicoNome": "Dra. Bianca Lima",
+      "inicio": "2025-08-30T10:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende cirurgia para Cecilia Almeida com Dr. Caio Rodrigues em 05/09/2025 das 14:00 às 17:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Cecilia Almeida",
+      "medicoNome": "Dr. Caio Rodrigues",
+      "inicio": "2025-09-05T14:00",
+      "fim": "2025-09-05T17:00"
+    }
+  },
+  {
+    "comando": "marque uma consulta com o paciente Daniel Souza e o médico Dr. Diego Costa no dia 10 de setembro de 2025 das 11:00 às 11:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Daniel Souza",
+      "medicoNome": "Dr. Diego Costa",
+      "inicio": "2025-09-10T11:00",
+      "fim": "2025-09-10T11:45"
+    }
+  },
+  {
+    "comando": "cirurgia para Elisa Mendes com Dra. Erica Silva em 15/09/2025 das 09:00 às 12:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Elisa Mendes",
+      "medicoNome": "Dra. Erica Silva",
+      "inicio": "2025-09-15T09:00",
+      "fim": "2025-09-15T12:00"
+    }
+  },
+  {
+    "comando": "agendar consulta para Fabio Oliveira com Dr. Felipe Alves no dia 20/09/2025 às 08:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Fabio Oliveira",
+      "medicoNome": "Dr. Felipe Alves",
+      "inicio": "2025-09-20T08:30",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Gabriela Santos com Dra. Gisele Costa em 25 de setembro de 2025 das 13:30 às 16:30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Gabriela Santos",
+      "medicoNome": "Dra. Gisele Costa",
+      "inicio": "2025-09-25T13:30",
+      "fim": "2025-09-25T16:30"
+    }
+  },
+  {
+    "comando": "consulta para Heitor Lima com Dr. Hugo Pereira em 30/09/2025 das 16:00 às 16:50",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Heitor Lima",
+      "medicoNome": "Dr. Hugo Pereira",
+      "inicio": "2025-09-30T16:00",
+      "fim": "2025-09-30T16:50"
+    }
+  },
+  {
+    "comando": "agende uma cirurgia para Isabela Almeida com Dra. Ingrid Souza no dia 05/10/2025 das 10:00 às 13:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Isabela Almeida",
+      "medicoNome": "Dra. Ingrid Souza",
+      "inicio": "2025-10-05T10:00",
+      "fim": "2025-10-05T13:00"
+    }
+  },
+  {
+    "comando": "marque consulta para Joao Pedro com Dr. Julio Cesar em 10 de outubro de 2025 às 14:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Joao Pedro",
+      "medicoNome": "Dr. Julio Cesar",
+      "inicio": "2025-10-10T14:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Karina Oliveira com Dra. Larissa Mendes em 15/10/2025 das 08:30 às 11:30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Karina Oliveira",
+      "medicoNome": "Dra. Larissa Mendes",
+      "inicio": "2025-10-15T08:30",
+      "fim": "2025-10-15T11:30"
+    }
+  },
+  {
+    "comando": "agendar consulta para Leonardo Costa com Dr. Lucas Silva no dia 20/10/2025 das 15:00 às 15:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Leonardo Costa",
+      "medicoNome": "Dr. Lucas Silva",
+      "inicio": "2025-10-20T15:00",
+      "fim": "2025-10-20T15:45"
+    }
+  },
+  {
+    "comando": "consulta para Mariana Alves com Dra. Monica Pereira em 25 de outubro de 2025 às 09:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Mariana Alves",
+      "medicoNome": "Dra. Monica Pereira",
+      "inicio": "2025-10-25T09:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende cirurgia para Nicolas Mendes com Dr. Otavio Costa em 30/10/2025 das 12:00 às 15:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Nicolas Mendes",
+      "medicoNome": "Dr. Otavio Costa",
+      "inicio": "2025-10-30T12:00",
+      "fim": "2025-10-30T15:00"
+    }
+  },
+  {
+    "comando": "marque uma consulta com o paciente Olivia Santos e a médica Dra. Patricia Alves no dia 05/11/2025 das 11:00 às 11:50",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Olivia Santos",
+      "medicoNome": "Dra. Patricia Alves",
+      "inicio": "2025-11-05T11:00",
+      "fim": "2025-11-05T11:50"
+    }
+  },
+  {
+    "comando": "cirurgia para Paulo Ricardo com Dr. Quintino Junior em 10 de novembro de 2025 das 14:00 às 17:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Paulo Ricardo",
+      "medicoNome": "Dr. Quintino Junior",
+      "inicio": "2025-11-10T14:00",
+      "fim": "2025-11-10T17:00"
+    }
+  },
+  {
+    "comando": "agendar consulta para Quiteria Oliveira com Dra. Raissa Silva em 15/11/2025 às 08:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Quiteria Oliveira",
+      "medicoNome": "Dra. Raissa Silva",
+      "inicio": "2025-11-15T08:30",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Rafaela Costa com Dr. Rodrigo Mendes em 20/11/2025 das 09:00 às 12:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Rafaela Costa",
+      "medicoNome": "Dr. Rodrigo Mendes",
+      "inicio": "2025-11-20T09:00",
+      "fim": "2025-11-20T12:00"
+    }
+  },
+  {
+    "comando": "consulta para Sergio Almeida com Dra. Tatiane Oliveira no dia 25 de novembro de 2025 das 16:00 às 16:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Sergio Almeida",
+      "medicoNome": "Dra. Tatiane Oliveira",
+      "inicio": "2025-11-25T16:00",
+      "fim": "2025-11-25T16:45"
+    }
+  },
+  {
+    "comando": "agende uma cirurgia para Talita Souza com Dra. Ursula Costa em 30/11/2025 das 13:00 às 16:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Talita Souza",
+      "medicoNome": "Dra. Ursula Costa",
+      "inicio": "2025-11-30T13:00",
+      "fim": "2025-11-30T16:00"
+    }
+  },
+  {
+    "comando": "marque consulta para Ulisses Mendes com Dr. Victor Hugo no dia 05/12/2025 às 10:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Ulisses Mendes",
+      "medicoNome": "Dr. Victor Hugo",
+      "inicio": "2025-12-05T10:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Vanessa Lima com Dra. Wanessa Alves em 10 de dezembro de 2025 das 08:00 às 11:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Vanessa Lima",
+      "medicoNome": "Dra. Wanessa Alves",
+      "inicio": "2025-12-10T08:00",
+      "fim": "2025-12-10T11:00"
+    }
+  },
+  {
+    "comando": "agendar consulta para William Santos com Dr. Xavier Pereira em 15/12/2025 das 14:00 às 14:50",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "William Santos",
+      "medicoNome": "Dr. Xavier Pereira",
+      "inicio": "2025-12-15T14:00",
+      "fim": "2025-12-15T14:50"
+    }
+  },
+  {
+    "comando": "consulta para Yasmin Costa com Dra. Yara Oliveira em 20/12/2025 às 09:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Yasmin Costa",
+      "medicoNome": "Dra. Yara Oliveira",
+      "inicio": "2025-12-20T09:30",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende cirurgia para Zacarias Almeida com Dr. Ze Carlos em 25/12/2025 das 11:00 às 14:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Zacarias Almeida",
+      "medicoNome": "Dr. Ze Carlos",
+      "inicio": "2025-12-25T11:00",
+      "fim": "2025-12-25T14:00"
+    }
+  },
+  {
+    "comando": "marque uma consulta com o paciente Adriana Silva e o médico Dr. Alberto Costa no dia 30/12/2025 das 15:00 às 15:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Adriana Silva",
+      "medicoNome": "Dr. Alberto Costa",
+      "inicio": "2025-12-30T15:00",
+      "fim": "2025-12-30T15:45"
+    }
+  },
+  {
+    "comando": "consulta para paciente Bernardo Oliveira com médico Dr. Cesar Santos em 05/01/2026 às 08:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Bernardo Oliveira",
+      "medicoNome": "Dr. Cesar Santos",
+      "inicio": "2026-01-05T08:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "cirurgia para Carolina Mendes com Dra. Daniela Lima em 10/01/2026 das 13:00 às 16:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Carolina Mendes",
+      "medicoNome": "Dra. Daniela Lima",
+      "inicio": "2026-01-10T13:00",
+      "fim": "2026-01-10T16:00"
+    }
+  },
+  {
+    "comando": "agendar consulta para Davi Souza com Dr. Elias Alves no dia 15 de janeiro de 2026 das 10:00 às 10:50",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Davi Souza",
+      "medicoNome": "Dr. Elias Alves",
+      "inicio": "2026-01-15T10:00",
+      "fim": "2026-01-15T10:50"
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Eloah Costa com Dra. Fatima Pereira em 20/01/2026 das 09:00 às 12:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Eloah Costa",
+      "medicoNome": "Dra. Fatima Pereira",
+      "inicio": "2026-01-20T09:00",
+      "fim": "2026-01-20T12:00"
+    }
+  },
+  {
+    "comando": "consulta para Fabiana Oliveira com Dr. Gustavo Santos em 25/01/2026 às 14:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Fabiana Oliveira",
+      "medicoNome": "Dr. Gustavo Santos",
+      "inicio": "2026-01-25T14:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende uma cirurgia para Gabriel Almeida com Dra. Heloisa Costa no dia 30/01/2026 das 16:00 às 19:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Gabriel Almeida",
+      "medicoNome": "Dra. Heloisa Costa",
+      "inicio": "2026-01-30T16:00",
+      "fim": "2026-01-30T19:00"
+    }
+  },
+  {
+    "comando": "marque consulta para Helena Mendes com Dr. Igor Oliveira em 05/02/2026 das 11:00 às 11:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Helena Mendes",
+      "medicoNome": "Dr. Igor Oliveira",
+      "inicio": "2026-02-05T11:00",
+      "fim": "2026-02-05T11:45"
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Ian Souza com Dra. Juliana Alves em 10 de fevereiro de 2026 das 08:30 às 11:30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Ian Souza",
+      "medicoNome": "Dra. Juliana Alves",
+      "inicio": "2026-02-10T08:30",
+      "fim": "2026-02-10T11:30"
+    }
+  },
+  {
+    "comando": "agendar consulta para Joana Costa com Dr. Kleber Mendes no dia 15/02/2026 às 09:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Joana Costa",
+      "medicoNome": "Dr. Kleber Mendes",
+      "inicio": "2026-02-15T09:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "consulta para Kevin Oliveira com Dra. Larissa Silva em 20/02/2026 das 15:00 às 15:50",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Kevin Oliveira",
+      "medicoNome": "Dra. Larissa Silva",
+      "inicio": "2026-02-20T15:00",
+      "fim": "2026-02-20T15:50"
+    }
+  },
+  {
+    "comando": "agende cirurgia para Laura Almeida com Dr. Marcos Paulo em 25/02/2026 das 12:00 às 15:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Laura Almeida",
+      "medicoNome": "Dr. Marcos Paulo",
+      "inicio": "2026-02-25T12:00",
+      "fim": "2026-02-25T15:00"
+    }
+  },
+  {
+    "comando": "marque uma consulta com o paciente Miguel Santos e a médica Dra. Nadia Costa no dia 02/03/2026 às 10:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Miguel Santos",
+      "medicoNome": "Dra. Nadia Costa",
+      "inicio": "2026-03-02T10:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "cirurgia para Nina Oliveira com Dr. Osvaldo Alves em 07/03/2026 das 14:00 às 17:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Nina Oliveira",
+      "medicoNome": "Dr. Osvaldo Alves",
+      "inicio": "2026-03-07T14:00",
+      "fim": "2026-03-07T17:00"
+    }
+  },
+  {
+    "comando": "agendar consulta para Otavio Mendes com Dra. Paula Santos no dia 12 de março de 2026 das 16:00 às 16:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Otavio Mendes",
+      "medicoNome": "Dra. Paula Santos",
+      "inicio": "2026-03-12T16:00",
+      "fim": "2026-03-12T16:45"
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Priscila Costa com Dr. Quirino Oliveira em 17/03/2026 das 09:00 às 12:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Priscila Costa",
+      "medicoNome": "Dr. Quirino Oliveira",
+      "inicio": "2026-03-17T09:00",
+      "fim": "2026-03-17T12:00"
+    }
+  },
+  {
+    "comando": "consulta para Rafael Almeida com Dra. Renata Mendes em 22/03/2026 às 08:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Rafael Almeida",
+      "medicoNome": "Dra. Renata Mendes",
+      "inicio": "2026-03-22T08:30",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende uma cirurgia para Sabrina Souza com Dr. Tiago Costa no dia 27/03/2026 das 13:00 às 16:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Sabrina Souza",
+      "medicoNome": "Dr. Tiago Costa",
+      "inicio": "2026-03-27T13:00",
+      "fim": "2026-03-27T16:00"
+    }
+  },
+  {
+    "comando": "marque uma consulta com o paciente João Silva e o médico Carlos Lima no dia 15/03/2025 das 14:00 às 14:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "João Silva",
+      "medicoNome": "Carlos Lima",
+      "inicio": "2025-03-15T14:00",
+      "fim": "2025-03-15T14:30"
+    }
+  },
+  {
+    "comando": "agende uma cirurgia para Maria Santos com Ana Costa em 20/03/2025 das 08:00 às 10:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Maria Santos",
+      "medicoNome": "Ana Costa",
+      "inicio": "2025-03-20T08:00",
+      "fim": "2025-03-20T10:00"
+    }
+  },
+  {
+    "comando": "marcar consulta para Pedro Alves com Roberto Souza no dia 25 de março de 2025 às 09:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Pedro Alves",
+      "medicoNome": "Roberto Souza",
+      "inicio": "2025-03-25T09:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende cirurgia para Ana Paula com Fernanda Lima em 30 de março de 2025 das 13:30 às 15:30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Ana Paula",
+      "medicoNome": "Fernanda Lima",
+      "inicio": "2025-03-30T13:30",
+      "fim": "2025-03-30T15:30"
+    }
+  },
+  {
+    "comando": "marque consulta para Carlos Eduardo com Marcelo Dias em 05/04/2025 às 11:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Carlos Eduardo",
+      "medicoNome": "Marcelo Dias",
+      "inicio": "2025-04-05T11:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marcar cirurgia para Juliana Pereira com Patricia Santos em 10/04/2025 das 07:00 às 09:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Juliana Pereira",
+      "medicoNome": "Patricia Santos",
+      "inicio": "2025-04-10T07:00",
+      "fim": "2025-04-10T09:00"
+    }
+  },
+  {
+    "comando": "agende uma consulta com o paciente Rafael Mendes e o médico Antonio Costa no dia 15 de abril de 2025 das 16:00 às 16:45",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Rafael Mendes",
+      "medicoNome": "Antonio Costa",
+      "inicio": "2025-04-15T16:00",
+      "fim": "2025-04-15T16:45"
+    }
+  },
+  {
+    "comando": "marque cirurgia para Beatriz Oliveira com Camila Rodrigues em 20/04/2025 das 14:00 às 17:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Beatriz Oliveira",
+      "medicoNome": "Camila Rodrigues",
+      "inicio": "2025-04-20T14:00",
+      "fim": "2025-04-20T17:00"
+    }
+  },
+  {
+    "comando": "agendar consulta para Lucas Silva com Eduardo Pereira em 25/04/2025 às 10:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Lucas Silva",
+      "medicoNome": "Eduardo Pereira",
+      "inicio": "2025-04-25T10:30",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marque uma cirurgia para Amanda Costa com Renata Alves no dia 30 de abril de 2025 das 08:30 às 11:30",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Amanda Costa",
+      "medicoNome": "Renata Alves",
+      "inicio": "2025-04-30T08:30",
+      "fim": "2025-04-30T11:30"
+    }
+  },
+  {
+    "comando": "consulta para paciente Bruno Martins com médico Ricardo Nunes em 05/05/2025 das 15:00 às 15:40",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Bruno Martins",
+      "medicoNome": "Ricardo Nunes",
+      "inicio": "2025-05-05T15:00",
+      "fim": "2025-05-05T15:40"
+    }
+  },
+  {
+    "comando": "cirurgia para Carla Souza com Vanessa Lima em 10/05/2025 das 12:00 às 14:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Carla Souza",
+      "medicoNome": "Vanessa Lima",
+      "inicio": "2025-05-10T12:00",
+      "fim": "2025-05-10T14:00"
+    }
+  },
+  {
+    "comando": "marcar consulta para Diego Oliveira com Fabio Santos em 15 de maio de 2025 às 14:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Diego Oliveira",
+      "medicoNome": "Fabio Santos",
+      "inicio": "2025-05-15T14:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agendar cirurgia para Eliane Costa com Gabriela Mendes em 20/05/2025 das 09:00 às 12:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Eliane Costa",
+      "medicoNome": "Gabriela Mendes",
+      "inicio": "2025-05-20T09:00",
+      "fim": "2025-05-20T12:00"
     }
   }
 ]
