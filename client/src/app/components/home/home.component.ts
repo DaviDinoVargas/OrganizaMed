@@ -1,123 +1,244 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MedicosService } from '../../components/medicos/medicos.service';
+import { AtividadesMedicasService } from '../../components/atividades/atividades-medicas.service';
 
-interface Mensagem {
-  usuario: 'user' | 'bot';
-  texto: string;
+interface Top10Item {
+  medicoId?: string;
+  medico: string;
+  crm?: string;
+  totalDeHorasTrabalhadas?: number;
+}
+
+interface DescansoWindow {
+  inicio: string; // ISO
+  fim: string;    // ISO
+}
+
+interface DescansosPorMedico {
+  medicoId?: string;
+  medicoNome: string;
+  crm?: string;
+  descansos: DescansoWindow[];
 }
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, RouterModule, MatCardModule, MatButtonModule, MatListModule],
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  comando: string = '';
-  mensagens: Mensagem[] = [];
+export class HomeComponent implements OnInit {
+  comando = '';
+  mensagens: any[] = [];
 
-  // ajuste as URLs conforme sua configuração local
-  private pythonUrl = 'http://127.0.0.1:8000/comando';
-  private dotnetBase = 'https://localhost:7043/api'; // base .NET (ajuste porta se necessário)
+  top10: Top10Item[] = [];
+  loadingTop10 = false;
 
-  constructor(private http: HttpClient) {}
+  descansosPorMedico: DescansosPorMedico[] = [];
+  loadingDescansos = false;
 
-  enviarComando(): void {
-    const texto = this.comando?.trim();
-    if (!texto) return;
+  private dotnetBase = 'https://localhost:7043/api';
 
-    // adiciona ao histórico
-    this.mensagens.push({ usuario: 'user', texto });
+  constructor(
+    private medSvc: MedicosService,
+    private atvSvc: AtividadesMedicasService,
+    private http: HttpClient
+  ) {}
 
-    // 1) chama o interpretador Python
-    this.http.post<any>(this.pythonUrl, { mensagem: texto }).subscribe({
-      next: (pyRes) => {
-        // pyRes esperado: { sucesso: true, dados: { tipoAtividade, pacienteNome, medicoNome, inicio, fim? } }
-        if (!pyRes?.sucesso || !pyRes?.dados) {
-          const err = pyRes?.erro ?? 'Interpretador não retornou dados';
-          this.mensagens.push({ usuario: 'bot', texto: `Erro: ${err}` });
-          this.comando = '';
-          return;
+  ngOnInit(): void {
+    this.refreshTop10();
+    this.refreshDescansos();
+  }
+
+  // --- HELPERS --------------------------------------------------------------
+  private extractArrayFromEnvelope(raw: any): any[] {
+    if (!raw) return [];
+    if (Array.isArray(raw)) return raw;
+    if (raw.registros && Array.isArray(raw.registros)) return raw.registros;
+    if (raw.dados && Array.isArray(raw.dados)) return raw.dados;
+    if (raw.dados?.registros && Array.isArray(raw.dados.registros)) return raw.dados.registros;
+    // fallback: maybe paged envelope with .dados.registros
+    return [];
+  }
+
+  /**
+   * tenta extrair CRM / nome / id de formatos variados:
+   * - { medicoId, medico, totalDeHorasTrabalhadas }
+   * - { id, nome, crm, horas }
+   * - { medico: { id, nome, crm }, totalDeHorasTrabalhadas }
+   */
+  private normalizeTop10Item(x: any): Top10Item {
+    const medicoObj = x.medico && typeof x.medico === 'object' ? x.medico : null;
+    const medicoNome =
+      x.medico && typeof x.medico === 'string' ? x.medico :
+      medicoObj?.nome ?? x.nome ?? x.medicoNome ?? x.medico ?? '—';
+
+    const medicoId = x.medicoId ?? x.id ?? medicoObj?.id;
+    const crm = medicoObj?.crm ?? x.crm ?? x.crmMedico ?? '—';
+
+    // heurística para horas — servidor pode devolver diferentes campos:
+    let horas = 0;
+    if (typeof x.totalDeHorasTrabalhadas === 'number') horas = x.totalDeHorasTrabalhadas;
+    else if (typeof x.horas === 'number') horas = x.horas;
+    else if (typeof x.horasTrabalhadas === 'number') horas = x.horasTrabalhadas;
+    else if (typeof x.totalEmMinutos === 'number') horas = x.totalEmMinutos / 60;
+    else if (typeof x.totalEmSegundos === 'number') horas = x.totalEmSegundos / 3600;
+
+    // se for um número alto (>24) e houver suspeita de minutos, tentamos detectar:
+    if (horas > 24 && Number.isInteger(horas)) {
+      // se > 24 e for inteiro, é provável que o servidor tenha retornado minutos sem nome padrão
+      // Dividimos por 60 como fallback
+      horas = horas / 60;
+    }
+
+    return {
+      medicoId,
+      medico: medicoNome,
+      crm,
+      totalDeHorasTrabalhadas: Math.round((horas + Number.EPSILON) * 100) / 100
+    };
+  }
+
+  // --- TOP10 ----------------------------------------------------------------
+  refreshTop10() {
+    this.loadingTop10 = true;
+    const inicio = new Date();
+    const termino = new Date();
+    termino.setDate(inicio.getDate() + 30);
+
+    const inicioIso = inicio.toISOString();
+    const terminoIso = termino.toISOString();
+
+    this.medSvc.top10(inicioIso, terminoIso).subscribe({
+      next: (r: any) => {
+        try {
+          const arr = this.extractArrayFromEnvelope(r);
+          this.top10 = (arr ?? []).map((x: any) => this.normalizeTop10Item(x));
+        } catch (e) {
+          console.error('Erro ao normalizar top10', e);
+          this.top10 = [];
+        } finally {
+          this.loadingTop10 = false;
         }
-
-        const dados = pyRes.dados;
-        this.mensagens.push({ usuario: 'bot', texto: JSON.stringify(dados) });
-
-        // 2) buscar paciente (por nome) no backend .NET
-        // Tenta buscar via GET /api/pacientes (ajuste endpoint caso possua filtro)
-        this.http.get<any>(`${this.dotnetBase}/pacientes`).subscribe({
-          next: (pacResp) => {
-            const pacientesList = (pacResp?.dados?.registros ?? pacResp?.registros ?? pacResp) as any[] || [];
-            const paciente = pacientesList.find(p => (p.nome ?? '').trim().toLowerCase() === (dados.pacienteNome ?? '').trim().toLowerCase());
-            if (!paciente) {
-              this.mensagens.push({ usuario: 'bot', texto: `Paciente "${dados.pacienteNome}" não encontrado.` });
-              this.comando = '';
-              return;
-            }
-
-            // 3) buscar medico
-            this.http.get<any>(`${this.dotnetBase}/medicos`).subscribe({
-              next: (medResp) => {
-                const medList = (medResp?.dados?.registros ?? medResp?.registros ?? medResp) as any[] || [];
-                const medico = medList.find(m => (m.nome ?? '').trim().toLowerCase() === (dados.medicoNome ?? '').trim().toLowerCase());
-                if (!medico) {
-                  this.mensagens.push({ usuario: 'bot', texto: `Médico "${dados.medicoNome}" não encontrado.` });
-                  this.comando = '';
-                  return;
-                }
-
-                // 4) montar payload compatível com seu DTO
-                const payload: any = {
-                  inicio: dados.inicio,
-                  termino: dados.fim ?? undefined,
-                  tipoAtividade: dados.tipoAtividade ?? 'Consulta',
-                  pacienteId: paciente.id,
-                  medicos: [medico.id]
-                };
-
-                // 5) criar atividade médica
-                this.http.post<any>(`${this.dotnetBase}/atividades-medicas`, payload).subscribe({
-                  next: (createRes) => {
-                    this.mensagens.push({ usuario: 'bot', texto: 'Atividade médica criada com sucesso.' });
-                    // opcional: navegar ou atualizar lista
-                  },
-                  error: (err: any) => {
-                    console.error('Erro criando atividade:', err);
-                    this.mensagens.push({ usuario: 'bot', texto: `Erro ao criar atividade: ${err?.message ?? JSON.stringify(err)}` });
-                  }
-                });
-              },
-              error: (err: any) => {
-                console.error('Erro ao buscar médicos:', err);
-                this.mensagens.push({ usuario: 'bot', texto: 'Erro ao buscar médicos.' });
-              }
-            });
-
-          },
-          error: (err: any) => {
-            console.error('Erro ao buscar pacientes:', err);
-            this.mensagens.push({ usuario: 'bot', texto: 'Erro ao buscar pacientes.' });
-          }
-        });
       },
-      error: (err: any) => {
-        console.error('Erro ao chamar interpretador Python:', err);
-        // mostra erro claro na UI
-        if (err?.status === 0) {
-          this.mensagens.push({ usuario: 'bot', texto: 'Erro: não foi possível conectar ao interpretador (verifique se o Python/uvicorn está rodando).' });
-        } else if (err?.status === 422) {
-          this.mensagens.push({ usuario: 'bot', texto: `Requisição inválida: ${JSON.stringify(err.error)}` });
-        } else {
-          this.mensagens.push({ usuario: 'bot', texto: `Erro desconhecido: ${err?.message ?? JSON.stringify(err)}` });
-        }
+      error: (err) => {
+        console.error('Erro top10', err);
+        this.top10 = [];
+        this.loadingTop10 = false;
       }
     });
+  }
 
-    this.comando = '';
+  // --- DESCANSOS ------------------------------------------------------------
+  refreshDescansos() {
+    this.loadingDescansos = true;
+    const now = new Date();
+    const end = new Date();
+    end.setDate(now.getDate() + 30);
+
+    // pegar todas as atividades (backend não tem filtro por data, então buscamos e filtramos cliente-side)
+    this.atvSvc.listar().subscribe({
+      next: (raw: any) => {
+        try {
+          const registros = this.extractArrayFromEnvelope(raw);
+          const atividades = (registros ?? []).map((a: any) => ({
+            id: a.id,
+            inicio: a.inicio ? new Date(a.inicio) : null,
+            termino: a.termino ? new Date(a.termino) : (a.inicio ? new Date(a.inicio) : null),
+            tipo: (a.tipoAtividade ?? a.tipo ?? 'Consulta'),
+            paciente: a.paciente,
+            medicos: a.medicos ?? []
+          }));
+
+          // map médicoId -> lista de janelas de descanso
+          const map = new Map<string, DescansoWindow[]>();
+
+          atividades.forEach((a: { termino: Date | null; inicio: Date | null; tipo: string; medicos: any[]; }) => {
+            if (!a.inicio && !a.termino) return;
+
+            const termino = a.termino ?? a.inicio!;
+            const recoveryMs = a.tipo === 'Cirurgia' ? (4 * 60 * 60 * 1000) : (10 * 60 * 1000); // 4h ou 10min
+
+            // cálculo de janela de descanso real
+            const inicioDesc = termino;
+            const fimDesc = new Date(termino.getTime() + recoveryMs);
+
+            // Relevância:
+            // - atividades que terminam entre now..end
+            // - ou atividades que terminaram antes de now, mas cuja janela de descanso (fimDesc) ainda é > now (ou seja, descanso em curso)
+            // - ou atividades que iniciam entre now..end (eventos futuros)
+            const terminoBetween = termino >= now && termino <= end;
+            const inicioBetween = (a.inicio ?? termino) >= now && (a.inicio ?? termino) <= end;
+            const descansoAindaVigente = fimDesc.getTime() > now.getTime() && termino < now; // terminou no passado, mas resta descanso
+
+            if (!(terminoBetween || inicioBetween || descansoAindaVigente)) {
+              return; // não relevante nos próximos 30 dias nem descanso em curso
+            }
+
+            (a.medicos ?? []).forEach((m: any) => {
+              const id = m?.id ?? m;
+              if (!id) return;
+              const arr = map.get(id) ?? [];
+              arr.push({ inicio: inicioDesc.toISOString(), fim: fimDesc.toISOString() });
+              map.set(id, arr);
+            });
+          });
+
+          // obter lista de médicos para enriquecer (nome, crm)
+          this.medSvc.listar().subscribe({
+            next: (medRaw: any) => {
+              try {
+                const medArr = this.extractArrayFromEnvelope(medRaw);
+                const medLookup = new Map<string, any>();
+                (medArr ?? []).forEach((m: any) => medLookup.set(m.id, m));
+
+                const result: DescansosPorMedico[] = [];
+                for (const [medId, janelas] of map.entries()) {
+                  const m = medLookup.get(medId) ?? { id: medId, nome: '—', crm: '—' };
+                  // sort by inicio
+                  janelas.sort((a:any,b:any) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
+                  result.push({
+                    medicoId: medId,
+                    medicoNome: m.nome ?? m.medico ?? m.medicoNome ?? '—',
+                    crm: m.crm ?? '—',
+                    descansos: janelas
+                  });
+                }
+
+                // order by name
+                result.sort((a,b) => (a.medicoNome || '').localeCompare(b.medicoNome || ''));
+                this.descansosPorMedico = result;
+              } catch (e) {
+                console.error('Erro ao montar descansosPorMedico', e);
+                this.descansosPorMedico = [];
+              } finally {
+                this.loadingDescansos = false;
+              }
+            },
+            error: (errMed) => {
+              console.error('Erro ao buscar médicos para mapear descansos', errMed);
+              this.descansosPorMedico = [];
+              this.loadingDescansos = false;
+            }
+          });
+        } catch (e) {
+          console.error('Erro ao processar atividades', e);
+          this.descansosPorMedico = [];
+          this.loadingDescansos = false;
+        }
+      },
+      error: (err) => {
+        console.error('Erro ao buscar atividades', err);
+        this.descansosPorMedico = [];
+        this.loadingDescansos = false;
+      }
+    });
   }
 }

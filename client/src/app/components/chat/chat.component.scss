@@ -1,52 +1,55 @@
-/* src/app/components/chat/chat.component.scss */
+/* chat.component.scss
+   Chat fixo à direita, ocupando toda a altura e colado aos limites.
+   Sem linha no topo e sem causar scroll na página.
+*/
 
-/* --- Desktop panel: vertical no lado direito, sempre aberto --- */
+/* ---------------- DESKTOP: sidebar fixa ---------------- */
 .chat-panel.desktop {
   position: fixed;
+  top: 0;
   right: 0;
-  top: 72px; /* ajuste se seu header tiver outra altura */
-  height: calc(100vh - 72px); /* ocupa verticalmente quase toda a tela */
-  z-index: 9998;
+  bottom: 0;
+  width: 360px;              /* largura da sidebar */
+  height: 100vh;             /* ocupa toda a altura da viewport */
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  padding-right: 12px;
-  pointer-events: auto;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 100;              /* acima do conteúdo */
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.08);
 }
 
-/* cabeçalho do painel */
+/* remove qualquer linha/área de topo */
 .chat-panel .chat-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  background: transparent;
-  width: 360px; /* corresponde à largura do card */
-  justify-content: flex-end; /* alinha título/elementos à direita */
+  display: none;
 }
 
-/* container do card (aberto por padrão) */
+/* card ocupa tudo */
 .chat-panel .chat-card {
-  width: 360px;
-  max-width: calc(100vw - 20px);
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  pointer-events: auto;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  background: #fff;
+  border: none;
   border-radius: 0;
   margin: 0;
+  box-shadow: none;
+  overflow: hidden;
 }
 
-/* mensagens */
+/* área de mensagens */
 .chat-messages {
-  overflow: auto;
-  flex: 1;
-  margin-right: -10px;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 12px;
   background: #fafafa;
 }
 
-/* estilos das mensagens */
+/* mensagens */
 .user-msg { text-align: right; }
 .bot-msg { text-align: left; }
 
@@ -65,17 +68,18 @@
   font-size: 10px;
   opacity: 0.6;
   margin-top: 2px;
+  display: block;
 }
 
-/* input area */
+/* input fixo no rodapé */
 .chat-input {
   display:flex;
-  margin-right: -10px;
   gap:8px;
-  padding: 8px;
+  padding: 10px;
   border-top: 1px solid #eee;
   align-items: center;
   background: #fff;
+  flex: 0 0 auto;
 }
 .chat-input input {
   flex:1;
@@ -85,15 +89,15 @@
   outline: none;
 }
 
-/* --- Mobile --- */
+/* ---------------- MOBILE ---------------- */
 .mobile .fab-btn {
   position: fixed;
   right: 18px;
   bottom: 18px;
-  z-index: 10000;
   width: 56px;
   height: 56px;
   font-size: 22px;
+  z-index: 10000;
 }
 
 .mobile .mobile-overlay {
@@ -125,11 +129,9 @@
   border-bottom: 1px solid #eee;
 }
 
-/* ajustes de visibilidade */
-@media (min-width: 601px) {
-  .mobile { display: none; }
-}
-
-@media (max-width: 600px) {
-  .chat-panel { display: none; }
+/* responsividade: esconde versão desktop no mobile */
+@media (max-width: 800px) {
+  .chat-panel.desktop {
+    display: none;
+  }
 }

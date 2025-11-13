@@ -1,64 +1,120 @@
-<div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1>Organiza Med</h1>
-    <div>
-      <button mat-stroked-button color="primary" routerLink="/medicos">Médicos</button>
-      <button mat-stroked-button color="primary" routerLink="/pacientes" class="ms-2">Pacientes</button>
-      <button mat-stroked-button color="primary" routerLink="/atividades" class="ms-2">Atividades</button>
+<div class="home-root">
+  <div class="top-row d-flex justify-content-between align-items-center">
+    <div class="title-block">
+      <h1>Organiza Med</h1>
+      <div class="subtitle">Painel resumido — visão rápida de médicos, pacientes e atividades</div>
     </div>
+
+    <!-- <div class="actions-block">
+      <button mat-stroked-button color="primary" routerLink="/medicos" class="me-2">Médicos</button>
+      <button mat-stroked-button color="primary" routerLink="/pacientes" class="me-2">Pacientes</button>
+      <button mat-stroked-button color="primary" routerLink="/atividades-medicas">Atividades</button>
+    </div> -->
   </div>
 
-  <div class="row g-3">
-    <div class="col-12 col-md-4">
-      <mat-card class="h-100">
-        <mat-card-title>Médicos</mat-card-title>
-        <mat-card-content>
-          Gerencie cadastro, edição, exclusão e listagem de médicos.
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" routerLink="/medicos">Abrir</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+  <div class="cards-grid">
+    <mat-card class="card-block">
+      <mat-card-title>Médicos</mat-card-title>
+      <mat-card-content>
+        Gerencie cadastro, edição, exclusão e listagem de médicos.
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/medicos">Abrir</button>
+      </mat-card-actions>
+    </mat-card>
 
-    <div class="col-12 col-md-4">
-      <mat-card class="h-100">
-        <mat-card-title>Pacientes</mat-card-title>
-        <mat-card-content>
-          Cadastre e consulte pacientes — Nome, CPF, Email e Telefone.
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" routerLink="/pacientes">Abrir</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+    <mat-card class="card-block">
+      <mat-card-title>Pacientes</mat-card-title>
+      <mat-card-content>
+        Cadastre e consulte pacientes — Nome, CPF, Email e Telefone.
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/pacientes">Abrir</button>
+      </mat-card-actions>
+    </mat-card>
 
-    <div class="col-12 col-md-4">
-      <mat-card class="h-100">
-        <mat-card-title>Atividades Médicas</mat-card-title>
-        <mat-card-content>
-          Controle consultas e cirurgias, com filtros e regras de recuperação.
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" routerLink="/atividades-medicas">Abrir</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+    <mat-card class="card-block">
+      <mat-card-title>Atividades Médicas</mat-card-title>
+      <mat-card-content>
+        Controle consultas e cirurgias, com filtros e regras de recuperação.
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/atividades-medicas">Abrir</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 
-  <!-- Campo de chat LLM -->
-  <div class="chat-container">
-    <div class="chat-header">
-      Assistente Virtual
-    </div>
-    <div class="chat-messages">
-      <div *ngFor="let msg of mensagens" [ngClass]="{'user-msg': msg.usuario === 'user', 'bot-msg': msg.usuario === 'bot'}">
-        {{ msg.texto }}
-      </div>
-    </div>
-    <div class="chat-input">
-      <input type="text" placeholder="Digite um comando..." [(ngModel)]="comando" (keydown.enter)="enviarComando()"/>
-      <button mat-raised-button color="primary" (click)="enviarComando()">Enviar</button>
-    </div>
+  <hr class="sep" />
+
+  <div class="panels-grid">
+    <!-- TOP 10 -->
+    <mat-card class="panel-card">
+      <mat-card-title>Top 10 — Médicos mais ativos (próx. 30 dias)</mat-card-title>
+      <mat-card-content>
+        <div *ngIf="loadingTop10" class="loading">Carregando...</div>
+
+        <mat-list *ngIf="!loadingTop10 && top10?.length">
+          <mat-list-item *ngFor="let t of top10; index as i">
+            <div class="top10-item">
+              <div class="left">
+                <div class="rank">{{ i + 1 }}</div>
+                <div class="meta">
+                  <div class="name">{{ t.medico }}</div>
+                  <div class="small text-muted">CRM: {{ t.crm ?? '—' }}</div>
+                </div>
+              </div>
+              <div class="right text-end">
+                <div class="small text-muted">Horas trabalhadas</div>
+                <div class="top10-hours">{{ (t.totalDeHorasTrabalhadas ?? 0) > 0 ? (t.totalDeHorasTrabalhadas | number:'1.0-2') : '—' }}</div>
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+
+        <div *ngIf="!loadingTop10 && (!top10 || top10.length === 0)" class="empty">
+          Nenhum registro encontrado para o período.
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button (click)="refreshTop10()">Atualizar</button>
+        <button mat-button routerLink="/medicos">Ver todos os médicos</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- DESCANSOS -->
+    <mat-card class="panel-card">
+      <mat-card-title>Médicos — janelas de descanso (próx. 30 dias)</mat-card-title>
+      <mat-card-content>
+        <div *ngIf="loadingDescansos" class="loading">Calculando descansos...</div>
+
+        <div *ngIf="!loadingDescansos && descansosPorMedico && descansosPorMedico.length" class="desc-list">
+          <div *ngFor="let m of descansosPorMedico" class="descanso-medico">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <strong>{{ m.medicoNome }}</strong>
+                <div class="small text-muted">CRM: {{ m.crm ?? '—' }}</div>
+              </div>
+              <div class="small text-muted">{{ m.descansos.length }} janela(s)</div>
+            </div>
+
+            <ul class="mt-2 mb-0">
+              <li *ngFor="let d of m.descansos">
+                <small class="text-muted">{{ d.inicio | date:'short' }} — {{ d.fim | date:'short' }}</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div *ngIf="!loadingDescansos && (!descansosPorMedico || !descansosPorMedico.length)" class="empty">
+          Nenhuma janela de descanso encontrada nos próximos 30 dias.
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button (click)="refreshDescansos()">Atualizar</button>
+        <button mat-button routerLink="/atividades-medicas">Ver atividades</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

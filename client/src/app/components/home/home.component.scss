@@ -1,0 +1,126 @@
+:host { display:block; padding: 28px 16px; background: #fbfcfd; min-height: 100%; }
+
+.home-root {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #1f2937;
+}
+
+/* top row */
+.top-row {
+  padding: 8px 0 18px 0;
+  border-bottom: 1px solid #eef0f2;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-block h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.subtitle {
+  margin: 4px 0 0 0;
+  color: rgba(0,0,0,0.6);
+  font-size: 0.95rem;
+}
+
+/* actions (botões) */
+.actions-block button {
+  text-transform: none;
+  gap: 10px;
+}
+
+/* top small cards row */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.card-block {
+  min-height: 128px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(16,24,40,0.04);
+}
+
+/* separator */
+.sep {
+  margin: 20px 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e6eef6, transparent);
+}
+
+/* panels grid */
+.panels-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* panel card */
+.panel-card {
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(16,24,40,0.04);
+}
+
+mat-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding-bottom: 6px;
+}
+
+/* Top10 list */
+.top10-item {
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+  align-items:center;
+  padding: 10px 6px;
+}
+.top10-item .left { display:flex; align-items:center; gap:10px; }
+.rank {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f6fb;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #1e88e5;
+  font-size: 0.95rem;
+}
+.meta .name { font-weight: 600; }
+.top10-hours { font-weight: 700; font-size: 1rem; }
+
+/* descanso list */
+.desc-list { max-height: 360px; overflow: auto; padding-right: 6px; }
+.descanso-medico { padding: 10px 6px; border-bottom: 1px solid rgba(0,0,0,0.04); }
+.descanso-medico:last-child { border-bottom: none; }
+
+/* loading / empty */
+.loading { color: rgba(0,0,0,0.6); padding: 8px 0; }
+.empty { color: rgba(0,0,0,0.45); padding: 12px 0; }
+
+/* responsividade */
+@media (max-width: 991.98px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .panels-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 575.98px) {
+  :host { padding: 12px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .title-block h1 { font-size: 1.25rem; }
+  .rank { width: 34px; height: 34px; font-size: 0.9rem; }
+}
