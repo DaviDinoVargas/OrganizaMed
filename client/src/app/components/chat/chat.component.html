@@ -1,0 +1,16 @@
+<!-- src/app/components/chat/chat.component.html -->
+<mat-card class="chat-widget">
+  <mat-card-title>Assistente</mat-card-title>
+
+  <div class="chat-messages">
+    <div *ngFor="let m of mensagens" [ngClass]="{'user-msg': m.usuario==='user', 'bot-msg': m.usuario==='bot'}">
+      <div class="msg-text">{{ m.texto }}</div>
+      <div class="msg-ts">{{ m.ts | date:'shortTime' }}</div>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" placeholder="Digite um comando..." [(ngModel)]="comando" (keydown.enter)="enviarComando()" />
+    <button mat-raised-button color="primary" (click)="enviarComando()" [disabled]="loading">Enviar</button>
+  </div>
+</mat-card>
