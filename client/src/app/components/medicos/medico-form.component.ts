@@ -9,7 +9,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   selector: 'app-medico-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MatSnackBarModule],
-  templateUrl: './medico-form.component.html'
+  templateUrl: './medico-form.component.html',
+  styleUrls: ['../scss/global.scss']
 })
 export class MedicoFormComponent {
   form!: FormGroup;

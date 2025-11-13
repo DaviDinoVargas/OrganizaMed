@@ -107,34 +107,60 @@ export class HomeComponent implements OnInit {
   }
 
   // --- TOP10 ----------------------------------------------------------------
-  refreshTop10() {
-    this.loadingTop10 = true;
-    const inicio = new Date();
-    const termino = new Date();
-    termino.setDate(inicio.getDate() + 30);
+ refreshTop10() {
+  this.loadingTop10 = true;
+  const inicio = new Date();
+  const termino = new Date();
+  termino.setDate(inicio.getDate() + 30);
 
-    const inicioIso = inicio.toISOString();
-    const terminoIso = termino.toISOString();
+  const inicioIso = inicio.toISOString();
+  const terminoIso = termino.toISOString();
 
-    this.medSvc.top10(inicioIso, terminoIso).subscribe({
-      next: (r: any) => {
-        try {
-          const arr = this.extractArrayFromEnvelope(r);
-          this.top10 = (arr ?? []).map((x: any) => this.normalizeTop10Item(x));
-        } catch (e) {
-          console.error('Erro ao normalizar top10', e);
-          this.top10 = [];
-        } finally {
-          this.loadingTop10 = false;
-        }
-      },
-      error: (err) => {
-        console.error('Erro top10', err);
+  this.medSvc.top10(inicioIso, terminoIso).subscribe({
+    next: (r: any) => {
+      try {
+        const arr = this.extractArrayFromEnvelope(r);
+        const top10Raw = arr ?? [];
+
+        // Pega todos os médicos de uma vez
+        this.medSvc.listar().subscribe({
+          next: (medRaw: any) => {
+            const medArr = this.extractArrayFromEnvelope(medRaw);
+            const medLookup = new Map<string, any>();
+            (medArr ?? []).forEach((m: any) => medLookup.set(m.id, m));
+
+            // Normaliza top10 e enriquece com CRM
+            this.top10 = top10Raw.map((x: any) => {
+              const base = this.normalizeTop10Item(x);
+              const m = medLookup.get(base.medicoId ?? '') ?? {};
+              return {
+                ...base,
+                crm: m.crm ?? base.crm ?? '—'
+              };
+            });
+          },
+          error: (errMed) => {
+            console.error('Erro ao buscar médicos para top10', errMed);
+            this.top10 = top10Raw.map((x: any) => this.normalizeTop10Item(x));
+          },
+          complete: () => {
+            this.loadingTop10 = false;
+          }
+        });
+      } catch (e) {
+        console.error('Erro ao normalizar top10', e);
         this.top10 = [];
         this.loadingTop10 = false;
       }
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Erro top10', err);
+      this.top10 = [];
+      this.loadingTop10 = false;
+    }
+  });
+}
+
 
   // --- DESCANSOS ------------------------------------------------------------
   refreshDescansos() {

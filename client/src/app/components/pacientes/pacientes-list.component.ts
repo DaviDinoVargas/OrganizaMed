@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-pacientes-list',
   standalone: true,
   imports: [CommonModule, RouterModule, MatSnackBarModule, FormsModule],
-  templateUrl: './pacientes-list.component.html'
+  templateUrl: './pacientes-list.component.html',
+  styleUrls: ['../scss/global.scss']
 })
 export class PacientesListComponent {
   pacientes: PacienteDto[] = [];

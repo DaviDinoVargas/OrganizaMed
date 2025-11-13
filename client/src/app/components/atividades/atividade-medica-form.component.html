@@ -1,67 +1,44 @@
-<h2>{{ id ? 'Editar' : 'Nova' }} Atividade Médica</h2>
+<div class="container mt-3">
+  <h4>{{ id ? 'Editar' : 'Nova' }} Atividade Médica</h4>
 
-<div *ngIf="false" style="background: #f0f0f0; padding: 10px; margin-bottom: 20px;">
-  <h4>Debug Info:</h4>
-  <p>Pacientes: {{ pacientes.length }}</p>
-  <p>Médicos: {{ medicosList.length }}</p>
-  <p>Form válido: {{ form.valid }}</p>
-  <p>Form errors: {{ form.errors | json }}</p>
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+  <div class="mb-3">
+  <label class="form-label">Início</label>
+  <input type="datetime-local" class="form-control" formControlName="inicio">
 </div>
 
-<form [formGroup]="form" (ngSubmit)="salvar()">
-  <div>
-    <label>Início:
-      <input type="datetime-local" formControlName="inicio">
-    </label>
-    <div *ngIf="form.get('inicio')?.invalid && form.get('inicio')?.touched" style="color: red;">
-      Início é obrigatório
+<div class="mb-3">
+  <label class="form-label">Término</label>
+  <input type="datetime-local" class="form-control" formControlName="termino">
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Tipo</label>
+  <select class="form-select" formControlName="tipoAtividade">
+    <option value="Consulta">Consulta</option>
+    <option value="Cirurgia">Cirurgia</option>
+  </select>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Paciente</label>
+  <select class="form-select" formControlName="pacienteId">
+    <option value="">Selecione</option>
+    <option *ngFor="let p of pacientes" [value]="p.id">{{ p.nome }}</option>
+  </select>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Médico</label>
+  <select class="form-select" formControlName="medicos" multiple>
+    <option *ngFor="let m of medicosList" [value]="m.id">{{ m.nome }} - {{ m.crm }}</option>
+  </select>
+</div>
+
+    <!-- Botões -->
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary" type="submit" [disabled]="loading">{{ loading ? 'Salvando...' : 'Salvar' }}</button>
+      <button class="btn btn-secondary" type="button" (click)="cancelar()">Cancelar</button>
     </div>
-  </div>
-
-  <div>
-    <label>Término:
-      <input type="datetime-local" formControlName="termino">
-    </label>
-  </div>
-
-  <div>
-    <label>Tipo:
-      <select formControlName="tipoAtividade">
-        <option value="Consulta">Consulta</option>
-        <option value="Cirurgia">Cirurgia</option>
-      </select>
-    </label>
-  </div>
-
-  <div>
-    <label>Paciente:
-      <select formControlName="pacienteId">
-        <option value="">Selecione</option>
-        <option *ngFor="let p of pacientes" [value]="p.id">
-          {{ p.nome }} ({{ p.id }})
-        </option>
-      </select>
-    </label>
-    <div *ngIf="form.get('pacienteId')?.invalid && form.get('pacienteId')?.touched" style="color: red;">
-      Paciente é obrigatório
-    </div>
-  </div>
-
-  <div>
-    <label>Médicos:
-      <select formControlName="medicos" multiple size="4">
-        <option *ngFor="let m of medicosList" [value]="m.id">
-          {{ m.nome }} - {{ m.crm }}
-        </option>
-      </select>
-    </label>
-    <div *ngIf="form.get('medicos')?.invalid && form.get('medicos')?.touched" style="color: red;">
-      Pelo menos um médico é obrigatório
-    </div>
-  </div>
-
-  <button type="submit" [disabled]="loading">
-    {{ loading ? 'Salvando...' : 'Salvar' }}
-  </button>
-  <button type="button" (click)="cancelar()">Cancelar</button>
-</form>
+  </form>
+</div>

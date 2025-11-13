@@ -13,7 +13,8 @@ import { MedicoDto } from '../medicos/medico.model';
   selector: 'app-atividade-medica-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './atividade-medica-form.component.html'
+  templateUrl: './atividade-medica-form.component.html',
+  styleUrls: ['../scss/global.scss']
 })
 export class AtividadeMedicaFormComponent implements OnInit {
   form!: FormGroup;

@@ -8,7 +8,8 @@ import { MedicosService, MedicoDto } from './medicos.service';
   selector: 'app-medicos-list',
   standalone: true,
   imports: [CommonModule, RouterModule, MatSnackBarModule],
-  templateUrl: './medicos-list.component.html'
+  templateUrl: './medicos-list.component.html',
+  styleUrls: ['../scss/global.scss']
 })
 export class MedicosListComponent {
   medicos: MedicoDto[] = [];

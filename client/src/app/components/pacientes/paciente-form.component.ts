@@ -12,7 +12,8 @@ import { Subscription } from 'rxjs';
   selector: 'app-paciente-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MatSnackBarModule],
-  templateUrl: './paciente-form.component.html'
+  templateUrl: './paciente-form.component.html',
+  styleUrls: ['../scss/global.scss']
 })
 export class PacienteFormComponent implements OnInit, OnDestroy {
   form!: FormGroup;

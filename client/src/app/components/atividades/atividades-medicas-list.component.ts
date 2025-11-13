@@ -13,7 +13,8 @@ import { AtividadeMedicaDto, MedicoDto } from './atividade-medica.model';
     CommonModule, // *ngFor, pipes como date
     FormsModule,  // ngModel
     RouterModule  // routerLink
-  ]
+  ],
+  styleUrls: ['../scss/global.scss']
 })
 export class AtividadesMedicasListComponent implements OnInit {
   atividades: AtividadeMedicaDto[] = [];

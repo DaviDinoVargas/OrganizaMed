@@ -21,7 +21,6 @@
 
     <div class="mb-3">
       <label class="form-label">Telefone</label>
-      <!-- on blur formatador; você pode usar (input) para formatar dinamicamente -->
       <input class="form-control" formControlName="telefone" (blur)="formatTelefoneOnBlur()" placeholder="(00) 00000-0000" />
       <div *ngIf="form.controls['telefone'].invalid && form.controls['telefone'].touched" class="text-danger small">
         Telefone inválido. Formato esperado: (00) 00000-0000 ou (00) 0000-0000.
