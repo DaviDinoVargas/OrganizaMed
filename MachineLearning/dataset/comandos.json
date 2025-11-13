@@ -10,7 +10,7 @@
     }
   },
   {
-    "comando": "agende uma cirurgia para Maria com o Dr. Pedro em 15 de novembro às 14h até 17h",
+    "comando": "agende uma cirurgia para Maria com o Dr. Pedro em 15/11/2025 das 14:00 às 17:00",
     "json": {
       "tipoAtividade": "Cirurgia",
       "pacienteNome": "Maria",
@@ -20,34 +20,37 @@
     }
   },
   {
-    "comando": "crie um retorno para o paciente Carlos com o Dr. Ana dia 16/11 às 10h",
+    "comando": "marque uma consulta para Carlos com a Dra. Ana em 16/11/2025 às 10:00",
     "json": {
-      "tipoAtividade": "Retorno",
+      "tipoAtividade": "Consulta",
       "pacienteNome": "Carlos",
-      "medicoNome": "Dr. Ana",
-      "inicio": "2025-11-16T10:00"
+      "medicoNome": "Dra. Ana",
+      "inicio": "2025-11-16T10:00",
+      "fim": null
     }
   },
   {
-    "comando": "agendar exame com o paciente Beatriz e o médico Dr. Paulo para o dia 18/11 às 08:30",
+    "comando": "marcar cirurgia do paciente Beatriz com o Dr. Paulo em 18/11/2025 das 08:30 às 10:00",
     "json": {
-      "tipoAtividade": "Exame",
+      "tipoAtividade": "Cirurgia",
       "pacienteNome": "Beatriz",
       "medicoNome": "Dr. Paulo",
-      "inicio": "2025-11-18T08:30"
+      "inicio": "2025-11-18T08:30",
+      "fim": "2025-11-18T10:00"
     }
   },
   {
-    "comando": "marcar teleconsulta entre o paciente Tiago e a Dra. Clara no dia 20/11 às 13h30",
+    "comando": "agende uma consulta com Tiago e a Dra. Clara no dia 20/11/2025 às 13:30",
     "json": {
-      "tipoAtividade": "Teleconsulta",
+      "tipoAtividade": "Consulta",
       "pacienteNome": "Tiago",
       "medicoNome": "Dra. Clara",
-      "inicio": "2025-11-20T13:30"
+      "inicio": "2025-11-20T13:30",
+      "fim": null
     }
   },
   {
-    "comando": "reserva uma consulta para João dia 12-11-2025 das 9 às 10h com o Dr. Pedro",
+    "comando": "marque consulta para João com Dr. Pedro em 12/11/2025 das 09:00 às 10:00",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "João",
@@ -57,7 +60,7 @@
     }
   },
   {
-    "comando": "criar cirurgia do paciente Marcos com a médica Ana em 13/11/25 às 15h até 17h30",
+    "comando": "agende cirurgia para Marcos com Dra. Ana em 13/11/2025 das 15:00 às 17:30",
     "json": {
       "tipoAtividade": "Cirurgia",
       "pacienteNome": "Marcos",
@@ -67,52 +70,123 @@
     }
   },
   {
-    "comando": "agendar retorno do paciente Lara com o Dr. João amanhã às 9h",
+    "comando": "marque consulta para Lara com Dr. João amanhã às 09:00",
     "json": {
-      "tipoAtividade": "Retorno",
+      "tipoAtividade": "Consulta",
       "pacienteNome": "Lara",
       "medicoNome": "Dr. João",
-      "inicio": "2025-11-12T09:00"
+      "inicio": "2025-11-12T09:00",
+      "fim": null
     }
   },
   {
-    "comando": "consulta online paciente Pedro com a médica Fernanda hoje às 10h",
+    "comando": "agende consulta para Pedro com Dra. Fernanda hoje às 10:00",
     "json": {
-      "tipoAtividade": "Teleconsulta",
+      "tipoAtividade": "Consulta",
       "pacienteNome": "Pedro",
       "medicoNome": "Dra. Fernanda",
-      "inicio": "2025-11-11T10:00"
+      "inicio": "2025-11-11T10:00",
+      "fim": null
     }
   },
   {
-    "comando": "agendar cirurgia urgente paciente Bruno médico Dr. Luiz 14/11 às 11h até 13h",
+    "comando": "marque cirurgia urgente para Bruno com Dr. Luiz em 14/11/2025 das 11:00 às 13:00",
     "json": {
       "tipoAtividade": "Cirurgia",
       "pacienteNome": "Bruno",
       "medicoNome": "Dr. Luiz",
       "inicio": "2025-11-14T11:00",
-      "fim": "2025-11-14T13:00",
-      "urgente": true
+      "fim": "2025-11-14T13:00"
     }
   },
   {
-    "comando": "marque uma consulta com o paciente Dino Dino com o medico Dinos dia 12/11/2025 as 10:30 até as 11:30 do mesmo dia",
+    "comando": "marque consulta para Dino Dino com Dr. Dinos no dia 12/11/2025 das 10:30 às 11:30",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "Dino Dino",
-      "medicoNome": "Dinos",
+      "medicoNome": "Dr. Dinos",
       "inicio": "2025-11-12T10:30",
       "fim": "2025-11-12T11:30"
     }
   },
   {
-    "comando": "agende uma consulta entre o paciente Dino Dino e o médico dindin para o dia 12 de novembro de 2025 das 10:30 às 11:30",
+    "comando": "agende consulta para Ana com Dr. Carlos em 17/11/2025 às 14:00",
     "json": {
       "tipoAtividade": "Consulta",
-      "pacienteNome": "Dino Dino",
-      "medicoNome": "Dinos",
-      "inicio": "2025-11-12T10:30",
-      "fim": "2025-11-12T11:30"
+      "pacienteNome": "Ana",
+      "medicoNome": "Dr. Carlos",
+      "inicio": "2025-11-17T14:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marque cirurgia para Felipe com Dra. Renata em 19/11/2025 das 09:00 às 12:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Felipe",
+      "medicoNome": "Dra. Renata",
+      "inicio": "2025-11-19T09:00",
+      "fim": "2025-11-19T12:00"
+    }
+  },
+  {
+    "comando": "marque consulta para Gabriela com Dr. Eduardo em 21/11/2025 às 11:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Gabriela",
+      "medicoNome": "Dr. Eduardo",
+      "inicio": "2025-11-21T11:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende cirurgia para Rafael com Dra. Beatriz em 22/11/2025 das 15:00 às 18:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Rafael",
+      "medicoNome": "Dra. Beatriz",
+      "inicio": "2025-11-22T15:00",
+      "fim": "2025-11-22T18:00"
+    }
+  },
+  {
+    "comando": "marque consulta para Júlia com Dr. Henrique em 23/11/2025 às 10:00",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Júlia",
+      "medicoNome": "Dr. Henrique",
+      "inicio": "2025-11-23T10:00",
+      "fim": null
+    }
+  },
+  {
+    "comando": "agende cirurgia para Leonardo com Dra. Paula em 24/11/2025 das 13:00 às 16:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "Leonardo",
+      "medicoNome": "Dra. Paula",
+      "inicio": "2025-11-24T13:00",
+      "fim": "2025-11-24T16:00"
+    }
+  },
+  {
+    "comando": "marque consulta para Mariana com Dr. Rodrigo em 25/11/2025 às 09:30",
+    "json": {
+      "tipoAtividade": "Consulta",
+      "pacienteNome": "Mariana",
+      "medicoNome": "Dr. Rodrigo",
+      "inicio": "2025-11-25T09:30",
+      "fim": null
+    }
+  },
+  {
+    "comando": "marque cirurgia para André com Dra. Fernanda em 26/11/2025 das 10:00 às 13:00",
+    "json": {
+      "tipoAtividade": "Cirurgia",
+      "pacienteNome": "André",
+      "medicoNome": "Dra. Fernanda",
+      "inicio": "2025-11-26T10:00",
+      "fim": "2025-11-26T13:00"
     }
   }
 ]
