@@ -8,6 +8,8 @@ import json
 from datetime import datetime
 
 app = FastAPI(title="Mini LLM - OrganizaMed", version="1.1")
+# fazer ajuste e limpeza de código (obs: o código está limpando as entradas, realizar treinamento para
+# a ML/IA compreender as entradas sem necessitar de limpeza adicional de código)
 
 # CORS para dev local (Angular)
 app.add_middleware(
