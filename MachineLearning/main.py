@@ -76,10 +76,10 @@ def parse_time(t: str) -> Optional[str]:
     return None
 
 def interpretar_comando(texto: str) -> Optional[Dict[str, Any]]:
-    """
-    Tenta extrair: tipoAtividade, pacienteNome, medicoNome, inicio (ISO), fim (ISO opcional)
-    Retorna dict ou None se não conseguiu.
-    """
+
+    # Tenta extrair: tipoAtividade, pacienteNome, medicoNome, inicio (ISO), fim (ISO opcional)
+    # Retorna dict ou None se não conseguiu.
+
     if not texto:
         return None
 
