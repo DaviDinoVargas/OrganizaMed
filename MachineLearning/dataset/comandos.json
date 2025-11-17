@@ -520,7 +520,7 @@
     }
   },
   {
-    "comando": "marque consulta para Ulisses Mendes com Dr. Victor Hugo no dia 05/12/2025 às 10:00",
+    "comando": "marque consulta para Ulisses Mendes com Dr. Victor Hugo no dia 05/12/2025 as 10:00",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "Ulisses Mendes",
@@ -530,7 +530,7 @@
     }
   },
   {
-    "comando": "marcar cirurgia para Vanessa Lima com Dra. Wanessa Alves em 10 de dezembro de 2025 das 08:00 às 11:00",
+    "comando": "marcar cirurgia para Vanessa Lima com Dra. Wanessa Alves em 10 de dezembro de 2025 das 08:00 as 11:00",
     "json": {
       "tipoAtividade": "Cirurgia",
       "pacienteNome": "Vanessa Lima",
@@ -540,7 +540,7 @@
     }
   },
   {
-    "comando": "agendar consulta para William Santos com Dr. Xavier Pereira em 15/12/2025 das 14:00 às 14:50",
+    "comando": "agendar consulta para William Santos com Dr. Xavier Pereira em 15/12/2025 das 14:00 as 14:50",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "William Santos",
@@ -660,7 +660,7 @@
     }
   },
   {
-    "comando": "agendar consulta para Joana Costa com Dr. Kleber Mendes no dia 15/02/2026 às 09:00",
+    "comando": "agendar consulta para Joana Costa com Dr. Kleber Mendes no dia 15/02/2026 as 09:00",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "Joana Costa",
@@ -670,7 +670,7 @@
     }
   },
   {
-    "comando": "consulta para Kevin Oliveira com Dra. Larissa Silva em 20/02/2026 das 15:00 às 15:50",
+    "comando": "consulta para Kevin Oliveira com Dra. Larissa Silva em 20/02/2026 das 15:00 as 15:50",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "Kevin Oliveira",
@@ -690,7 +690,7 @@
     }
   },
   {
-    "comando": "marque uma consulta com o paciente Miguel Santos e a médica Dra. Nadia Costa no dia 02/03/2026 às 10:00",
+    "comando": "marque uma consulta com o paciente Miguel Santos e a médica Dra. Nadia Costa no dia 02/03/2026 as 10:00",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "Miguel Santos",
@@ -720,7 +720,7 @@
     }
   },
   {
-    "comando": "marcar cirurgia para Priscila Costa com Dr. Quirino Oliveira em 17/03/2026 das 09:00 às 12:00",
+    "comando": "marcar cirurgia para Priscila Costa com Dr. Quirino Oliveira em 17/03/2026 das 09:00 as 12:00",
     "json": {
       "tipoAtividade": "Cirurgia",
       "pacienteNome": "Priscila Costa",
@@ -760,7 +760,7 @@
     }
   },
   {
-    "comando": "agende uma cirurgia para Maria Santos com Ana Costa em 20/03/2025 das 08:00 às 10:00",
+    "comando": "agende uma cirurgia para Maria Santos com Ana Costa em 20/03/2025 das 08:00 as 10:00",
     "json": {
       "tipoAtividade": "Cirurgia",
       "pacienteNome": "Maria Santos",
@@ -810,7 +810,7 @@
     }
   },
   {
-    "comando": "agende uma consulta com o paciente Rafael Mendes e o médico Antonio Costa no dia 15 de abril de 2025 das 16:00 às 16:45",
+    "comando": "agende uma consulta com o paciente Rafael Mendes e o médico Antonio Costa no dia 15 de abril de 2025 das 16:00 as 16:45",
     "json": {
       "tipoAtividade": "Consulta",
       "pacienteNome": "Rafael Mendes",
@@ -880,7 +880,7 @@
     }
   },
   {
-    "comando": "agendar cirurgia para Eliane Costa com Gabriela Mendes em 20/05/2025 das 09:00 às 12:00",
+    "comando": "agendar cirurgia para Eliane Costa com Gabriela Mendes em 20/05/2025 das 09:00 as 12:00",
     "json": {
       "tipoAtividade": "Cirurgia",
       "pacienteNome": "Eliane Costa",
