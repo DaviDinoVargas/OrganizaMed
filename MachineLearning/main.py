@@ -95,6 +95,13 @@ def interpretar_comando(texto: str) -> Optional[Dict[str, Any]]:
 
         # padrões de prefixos a remover (case-insensitive)
         prefixes = [
+            r'^(?:marcar|marque|agendar|agende)\s+consulta\s+para\s+o\s+paciente\s+',
+            r'^(?:marcar|marque|agendar|agende)\s+consulta\s+para\s+o\s+',
+            r'^(?:marcar|marque|agendar|agende)\s+consulta\s+para\s+',
+            r'^(?:marcar|marque|agendar|agende)\s+consulta\s+',
+            r'^(?:marcar|marque|agendar|agende)\s+para\s+o\s+paciente\s+',
+            r'^(?:marcar|marque|agendar|agende)\s+para\s+o\s+',
+            r'^(?:marcar|marque|agendar|agende)\s+para\s+',
             r'^consulta\s+para\s+o\s+paciente\s+',
             r'^consulta\s+para\s+o\s+',
             r'^consulta\s+para\s+',
@@ -106,6 +113,8 @@ def interpretar_comando(texto: str) -> Optional[Dict[str, Any]]:
             r'^\bo\b\s+',
             r'^\ba\b\s+'
         ]
+        
+        #ajuste temporário para limpeza de comando
 
         for p in prefixes:
             s = re.sub(p, '', s, flags=re.IGNORECASE).strip()
